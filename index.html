@@ -70,9 +70,9 @@ body{font-family:'Roboto',sans-serif;background:#F3F2F1;color:#0d1a3a;overflow-x
 .proof-lbl{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#ccc;white-space:nowrap;}
 .proof-div{width:1px;height:18px;background:var(--border);}
 .proof-logos{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
-.proof-logo-item{background:#f8f8f8;border:1px solid var(--border);border-radius:8px;padding:10px 18px;display:flex;align-items:center;justify-content:center;height:48px;}
-.proof-logo-item img{height:24px;width:auto;max-width:100px;object-fit:contain;filter:grayscale(100%) opacity(0.6);transition:filter 0.3s;}
-.proof-logo-item:hover img{filter:grayscale(0%) opacity(1);}
+.proof-logo-item{background:#f8f8f8;border:1px solid var(--border);border-radius:8px;padding:8px 16px;display:flex;align-items:center;gap:8px;height:44px;}
+.proof-logo-item img{height:20px;width:20px;border-radius:4px;object-fit:contain;}
+.proof-logo-item span{font-size:13px;font-weight:600;color:#555;white-space:nowrap;}
 
 .speaker-section{background:var(--white);border-bottom:1px solid var(--border);padding:72px 60px;}
 .speaker-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:56px;align-items:center;}
@@ -144,9 +144,10 @@ body{font-family:'Roboto',sans-serif;background:#F3F2F1;color:#0d1a3a;overflow-x
 .who-card span{font-size:14px;font-weight:500;color:var(--navy);}
 
 .hotels-wrap{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
-.hotel-tag{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:14px 22px;display:flex;align-items:center;justify-content:center;height:60px;transition:border-color 0.2s,box-shadow 0.2s;}
+.hotel-tag{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:12px 18px;display:flex;align-items:center;gap:10px;height:52px;transition:border-color 0.2s,box-shadow 0.2s;}
 .hotel-tag:hover{border-color:#c5dcf7;box-shadow:0 2px 12px rgba(35,132,229,0.08);}
-.hotel-tag img{height:28px;width:auto;max-width:110px;object-fit:contain;}
+.hotel-tag img{height:24px;width:24px;border-radius:5px;object-fit:contain;}
+.hotel-tag span{font-size:14px;font-weight:600;color:#444;white-space:nowrap;}
 .hotel-tag.text-tag{font-size:13px;font-weight:700;color:var(--blue);}
 
 .final-section{background:var(--navy);padding:80px 60px;}
@@ -299,13 +300,13 @@ body{font-family:'Roboto',sans-serif;background:#F3F2F1;color:#0d1a3a;overflow-x
     <div class="proof-lbl">Used by planners at</div>
     <div class="proof-div"></div>
     <div class="proof-logos">
-      <div class="proof-logo-item"><img src="https://logo.clearbit.com/tajhotels.com" alt="Taj Hotels"></div>
-      <div class="proof-logo-item"><img src="https://logo.clearbit.com/hyatt.com" alt="Hyatt"></div>
-      <div class="proof-logo-item"><img src="https://logo.clearbit.com/theleela.com" alt="The Leela"></div>
-      <div class="proof-logo-item"><img src="https://logo.clearbit.com/oberoihotels.com" alt="Oberoi"></div>
-      <div class="proof-logo-item"><img src="https://logo.clearbit.com/accor.com" alt="Accor"></div>
-      <div class="proof-logo-item"><img src="https://logo.clearbit.com/itchotels.com" alt="ITC Hotels"></div>
-      <div class="proof-logo-item"><img src="https://logo.clearbit.com/marriott.com" alt="JW Marriott"></div>
+      <div class="proof-logo-item"><img src="https://www.google.com/s2/favicons?domain=tajhotels.com&sz=64" alt="Taj"><span>Taj Hotels</span></div>
+      <div class="proof-logo-item"><img src="https://www.google.com/s2/favicons?domain=hyatt.com&sz=64" alt="Hyatt"><span>Hyatt</span></div>
+      <div class="proof-logo-item"><img src="https://www.google.com/s2/favicons?domain=theleela.com&sz=64" alt="Leela"><span>The Leela</span></div>
+      <div class="proof-logo-item"><img src="https://www.google.com/s2/favicons?domain=oberoihotels.com&sz=64" alt="Oberoi"><span>Oberoi</span></div>
+      <div class="proof-logo-item"><img src="https://www.google.com/s2/favicons?domain=accor.com&sz=64" alt="Accor"><span>Accor</span></div>
+      <div class="proof-logo-item"><img src="https://www.google.com/s2/favicons?domain=itchotels.com&sz=64" alt="ITC"><span>ITC Hotels</span></div>
+      <div class="proof-logo-item"><img src="https://www.google.com/s2/favicons?domain=marriott.com&sz=64" alt="Marriott"><span>JW Marriott</span></div>
       <span style="font-size:13px;font-weight:600;color:#aaa;">+ 500 venues</span>
     </div>
   </div>
@@ -411,21 +412,21 @@ body{font-family:'Roboto',sans-serif;background:#F3F2F1;color:#0d1a3a;overflow-x
     <div class="stag">Properties on Spalba</div>
     <h2>Trusted by planners working with<br>India's <em>finest properties.</em></h2>
     <div class="hotels-wrap">
-      <div class="hotel-tag"><img src="https://logo.clearbit.com/tajhotels.com" alt="Taj Hotels"></div>
-      <div class="hotel-tag"><img src="https://logo.clearbit.com/hyatt.com" alt="Hyatt"></div>
-      <div class="hotel-tag"><img src="https://logo.clearbit.com/theleela.com" alt="The Leela"></div>
-      <div class="hotel-tag"><img src="https://logo.clearbit.com/oberoihotels.com" alt="Oberoi Hotels"></div>
-      <div class="hotel-tag"><img src="https://logo.clearbit.com/accor.com" alt="Accor"></div>
-      <div class="hotel-tag"><img src="https://logo.clearbit.com/itchotels.com" alt="ITC Hotels"></div>
-      <div class="hotel-tag"><img src="https://logo.clearbit.com/marriott.com" alt="JW Marriott"></div>
-      <div class="hotel-tag"><img src="https://logo.clearbit.com/radissonhotels.com" alt="Radisson Blu"></div>
-      <div class="hotel-tag"><img src="https://logo.clearbit.com/hilton.com" alt="Hilton"></div>
-      <div class="hotel-tag"><img src="https://logo.clearbit.com/sheraton.com" alt="Sheraton"></div>
-      <div class="hotel-tag"><img src="https://logo.clearbit.com/fourseasons.com" alt="Four Seasons"></div>
-      <div class="hotel-tag"><img src="https://logo.clearbit.com/stregis.com" alt="St. Regis"></div>
-      <div class="hotel-tag"><img src="https://logo.clearbit.com/conradhotels.com" alt="Conrad"></div>
-      <div class="hotel-tag"><img src="https://logo.clearbit.com/westinhotels.com" alt="Westin"></div>
-      <div class="hotel-tag"><img src="https://logo.clearbit.com/sofitel.com" alt="Sofitel"></div>
+      <div class="hotel-tag"><img src="https://www.google.com/s2/favicons?domain=tajhotels.com&sz=64" alt="Taj"><span>Taj Hotels</span></div>
+      <div class="hotel-tag"><img src="https://www.google.com/s2/favicons?domain=hyatt.com&sz=64" alt="Hyatt"><span>Hyatt</span></div>
+      <div class="hotel-tag"><img src="https://www.google.com/s2/favicons?domain=theleela.com&sz=64" alt="Leela"><span>The Leela</span></div>
+      <div class="hotel-tag"><img src="https://www.google.com/s2/favicons?domain=oberoihotels.com&sz=64" alt="Oberoi"><span>Oberoi Hotels</span></div>
+      <div class="hotel-tag"><img src="https://www.google.com/s2/favicons?domain=accor.com&sz=64" alt="Accor"><span>Accor</span></div>
+      <div class="hotel-tag"><img src="https://www.google.com/s2/favicons?domain=itchotels.com&sz=64" alt="ITC"><span>ITC Hotels</span></div>
+      <div class="hotel-tag"><img src="https://www.google.com/s2/favicons?domain=marriott.com&sz=64" alt="Marriott"><span>JW Marriott</span></div>
+      <div class="hotel-tag"><img src="https://www.google.com/s2/favicons?domain=radissonhotels.com&sz=64" alt="Radisson"><span>Radisson Blu</span></div>
+      <div class="hotel-tag"><img src="https://www.google.com/s2/favicons?domain=hilton.com&sz=64" alt="Hilton"><span>Hilton</span></div>
+      <div class="hotel-tag"><img src="https://www.google.com/s2/favicons?domain=sheraton.com&sz=64" alt="Sheraton"><span>Sheraton</span></div>
+      <div class="hotel-tag"><img src="https://www.google.com/s2/favicons?domain=fourseasons.com&sz=64" alt="Four Seasons"><span>Four Seasons</span></div>
+      <div class="hotel-tag"><img src="https://www.google.com/s2/favicons?domain=stregis.com&sz=64" alt="St. Regis"><span>St. Regis</span></div>
+      <div class="hotel-tag"><img src="https://www.google.com/s2/favicons?domain=conradhotels.com&sz=64" alt="Conrad"><span>Conrad</span></div>
+      <div class="hotel-tag"><img src="https://www.google.com/s2/favicons?domain=westinhotels.com&sz=64" alt="Westin"><span>Westin</span></div>
+      <div class="hotel-tag"><img src="https://www.google.com/s2/favicons?domain=sofitel.com&sz=64" alt="Sofitel"><span>Sofitel</span></div>
       <div class="hotel-tag text-tag">+ 500 more venues</div>
     </div>
   </div>
