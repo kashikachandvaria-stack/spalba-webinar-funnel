@@ -513,8 +513,6 @@ var CONFIG = {
 
   WATI_API_BASE: 'https://live-mt-server.wati.io/106127/api/v1',
   WATI_TOKEN: _d('QmVhcmVyIGV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUoxYm1seGRXVmZibUZ0WlNJNkluTnZZMmxoYkVCemNHRnNZbUV1WTI5dElpd2libUZ0Wldsa0lqb2ljMjlqYVdGc1FITndZV3hpWVM1amIyMGlMQ0psYldGcGJDSTZJbk52WTJsaGJFQnpjR0ZzWW1FdVkyOXRJaXdpWVhWMGFGOTBhVzFsSWpvaU1ETXZNekF2TWpBeU5pQXhORG93TVRvek5pSXNJblJsYm1GdWRGOXBaQ0k2SWpFd05qRXlOeUlzSW1SaVgyNWhiV1VpT2lKdGRDMXdjbTlrTFZSbGJtRnVkSE1pTENKb2RIUndPaTh2YzJOb1pXMWhjeTV0YVdOeWIzTnZablF1WTI5dEwzZHpMekl3TURndk1EWXZhV1JsYm5ScGRIa3ZZMnhoYVcxekwzSnZiR1VpT2lKQlJFMUpUa2xUVkZKQlZFOVNJaXdpWlhod0lqb3lOVE0wTURJek1EQTRNREFzSW1semN5STZJa05zWVhKbFgwRkpJaXdpWVhWa0lqb2lRMnhoY21WZlFVa2lmUS5MZmVmbVpqY3RRelNfeHl0a2pNQWNRQ1plQ2NTRk93U1BIZWJtZTFFc3Z3'),
-  WATI_TEMPLATE_REGISTERED: 'webinar_registered',
-
   THANK_YOU_URL: 'thank-you.html',
   WATCH_URL: 'watch.html',
 
@@ -788,6 +786,7 @@ function submitRegistration() {
 
     // Send WhatsApp confirmation via WATI
     var phone = data.phone.replace(/[\s\-()]/g, '').replace(/^\+/, '');
+    if (phone.length === 10) phone = '91' + phone; // Add India code if missing
     var whatsappPromise = fetch(CONFIG.WATI_API_BASE + '/sendTemplateMessage?whatsappNumber=' + encodeURIComponent(phone), {
       method: 'POST',
       headers: {
@@ -795,10 +794,12 @@ function submitRegistration() {
         'Content-Type': 'application/json-patch+json'
       },
       body: JSON.stringify({
-        template_name: CONFIG.WATI_TEMPLATE_REGISTERED,
+        template_name: 'on_demand_webinar_confirm',
         broadcast_name: 'webinar_ondemand_registration',
         parameters: [
-          { name: 'first_name', value: data.firstName }
+          { name: '1', value: data.firstName },
+          { name: '2', value: selectedSession.dayLabel },
+          { name: '3', value: selectedSession.slot }
         ]
       })
     }).catch(function(e) { console.log('WATI error:', e); });
