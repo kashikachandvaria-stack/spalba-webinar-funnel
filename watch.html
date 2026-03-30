@@ -246,10 +246,14 @@ var datetime = params.get('dt');
 var email = params.get('em') || '';
 
 if (datetime) {
+  // Fix URL encoding: + gets decoded as space, restore it for timezone
+  datetime = datetime.replace(/ /g, '+');
   webinarStartTime = new Date(datetime);
-} else {
-  // If no datetime, start immediately (for testing / direct access)
-  webinarStartTime = new Date();
+}
+
+// If no datetime, invalid datetime, or time has already passed — start immediately
+if (!webinarStartTime || isNaN(webinarStartTime.getTime()) || webinarStartTime <= new Date()) {
+  webinarStartTime = new Date(); // triggers immediate start
 }
 
 // =============================================
