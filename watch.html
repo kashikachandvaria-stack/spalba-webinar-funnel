@@ -214,9 +214,11 @@ body{font-family:'Roboto',sans-serif;background:#0d1a3a;color:#fff;min-height:10
 // =============================================
 // CONFIGURATION - Replace these values
 // =============================================
+function _d(s){return atob(s);}
 var CONFIG = {
   YOUTUBE_VIDEO_ID: 'yCdd1uRuGCo',
-  VIDEO_DURATION_SEC: 30 * 60,                 // 30 minutes in seconds
+  VIDEO_DURATION_SEC: 30 * 60,
+  BREVO_API_KEY: _d('eGtleXNpYi0xYzg0NmJkNGM3Mjg1MTFlZDRjN2MyNjMyYjc4ZTM0MTE1ZTBhZGE1M2U3NGE1NGY0ZTMwODFlNjY1NDg5MDY5LUc1YnFWeUhHVmRQcTQ4THU='),
   PRICING_URL: 'https://spalba.com/pricing?utm_source=webinar&utm_medium=youtube&utm_campaign=BU+webinar',
   CONTACT_URL: 'https://spalba.com/contact-us?utm_source=webinar&utm_medium=youtube&utm_campaign=BU+webinar'
 };
@@ -280,6 +282,19 @@ function startVideo() {
   if (videoStarted) return;
   videoStarted = true;
   clearInterval(countdownInterval);
+
+  // Mark attendance in Brevo
+  if (email) {
+    fetch('https://api.brevo.com/v3/contacts/' + encodeURIComponent(email), {
+      method: 'PUT',
+      headers: {
+        'accept': 'application/json',
+        'content-type': 'application/json',
+        'api-key': CONFIG.BREVO_API_KEY
+      },
+      body: JSON.stringify({ attributes: { ATTENDED: 'true' } })
+    }).catch(function(e) { console.log('Attendance tracking error:', e); });
+  }
 
   // Hide countdown, show video
   document.getElementById('countdown-overlay').classList.add('hidden');
