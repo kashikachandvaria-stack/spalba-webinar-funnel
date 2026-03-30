@@ -502,16 +502,17 @@ body{font-family:'Roboto',sans-serif;background:#F3F2F1;color:#0d1a3a;overflow-x
   </div>
 </div>
 
+<script src="config.js"></script>
 <script>
 // =============================================
-// CONFIGURATION - Replace these values
+// CONFIGURATION
 // =============================================
 var CONFIG = {
-  BREVO_API_KEY: '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',
+  BREVO_API_KEY: (typeof SECRETS !== 'undefined') ? SECRETS.BREVO_API_KEY : '',
   BREVO_LIST_ID: 97,
 
   WATI_API_BASE: 'https://live-mt-server.wati.io/106127/api/v1',
-  WATI_TOKEN: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNvY2lhbEBzcGFsYmEuY29tIiwibmFtZWlkIjoic29jaWFsQHNwYWxiYS5jb20iLCJlbWFpbCI6InNvY2lhbEBzcGFsYmEuY29tIiwiYXV0aF90aW1lIjoiMDMvMzAvMjAyNiAxNDowMTozNiIsInRlbmFudF9pZCI6IjEwNjEyNyIsImRiX25hbWUiOiJtdC1wcm9kLVRlbmFudHMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBRE1JTklTVFJBVE9SIiwiZXhwIjoyNTM0MDIzMDA4MDAsImlzcyI6IkNsYXJlX0FJIiwiYXVkIjoiQ2xhcmVfQUkifQ.LfefmZjctQzS_xytkjMAcQCZeCcSFOwSPHebme1Esvw',
+  WATI_TOKEN: (typeof SECRETS !== 'undefined') ? SECRETS.WATI_TOKEN : '',
   WATI_TEMPLATE_REGISTERED: 'webinar_registered',
 
   THANK_YOU_URL: 'thank-you.html',
