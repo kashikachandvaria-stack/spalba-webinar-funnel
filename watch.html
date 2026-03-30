@@ -236,7 +236,7 @@ var videoStarted = false;
 var videoEnded = false;
 var elapsedInterval = null;
 var chatMessageCount = 1; // welcome message
-var viewerBase = Math.floor(Math.random() * 30) + 85; // 85-114
+var viewerBase = Math.floor(Math.random() * 3) + 2; // Start low (2-4) during countdown
 
 // =============================================
 // READ URL PARAMS
@@ -459,9 +459,17 @@ function showCTA() {
 // VIEWER COUNT SIMULATION
 // =============================================
 (function() {
+  var viewerTarget = viewerBase; // starts low
   function updateViewers() {
-    var change = Math.floor(Math.random() * 5) - 2; // -2 to +2
-    viewerBase = Math.max(70, Math.min(150, viewerBase + change));
+    if (videoStarted) {
+      // Ramp up gradually after video starts, cap at 80-130
+      viewerTarget = Math.min(viewerTarget + Math.floor(Math.random() * 8) + 2, Math.floor(Math.random() * 50) + 80);
+    } else {
+      // During countdown: slowly trickle in, stay low (2-12)
+      var change = Math.random() > 0.5 ? 1 : 0;
+      viewerTarget = Math.min(viewerTarget + change, 12);
+    }
+    viewerBase = viewerTarget;
     document.getElementById('viewer-count').textContent = viewerBase;
   }
   updateViewers();
