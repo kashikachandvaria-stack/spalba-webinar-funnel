@@ -37,7 +37,8 @@ body{font-family:'Roboto',sans-serif;background:#0d1a3a;color:#fff;min-height:10
 .video-area{display:flex;flex-direction:column;background:#000;position:relative;}
 .video-wrapper{flex:1;position:relative;background:#000;display:flex;align-items:center;justify-content:center;}
 .video-wrapper iframe{width:100%;height:100%;border:none;}
-.video-shield{position:absolute;inset:0;z-index:5;cursor:default;}
+.video-shield{position:absolute;top:0;left:0;right:0;bottom:60px;z-index:5;cursor:default;pointer-events:none;}
+.video-shield.active{pointer-events:all;}
 
 /* Countdown overlay */
 .countdown-overlay{position:absolute;inset:0;background:linear-gradient(135deg,#0d1a3a 0%,#1a2d5a 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;text-align:center;padding:40px;}
@@ -304,8 +305,29 @@ function startVideo() {
   document.getElementById('countdown-overlay').classList.add('hidden');
   var iframe = document.getElementById('yt-player');
   iframe.src = 'https://www.youtube.com/embed/' + CONFIG.YOUTUBE_VIDEO_ID +
-    '?autoplay=1&modestbranding=1&rel=0&showinfo=0&controls=0&enablejsapi=1&disablekb=1';
+    '?autoplay=1&mute=1&modestbranding=1&rel=0&showinfo=0&controls=0&enablejsapi=1&disablekb=1&fs=0&iv_load_policy=3&playsinline=1';
   iframe.style.display = 'block';
+
+  // Activate shield after video loads to block interaction
+  setTimeout(function() {
+    var shield = document.getElementById('video-shield');
+    if (shield) shield.classList.add('active');
+  }, 2000);
+
+  // Show unmute prompt
+  var unmuteDiv = document.createElement('div');
+  unmuteDiv.id = 'unmute-prompt';
+  unmuteDiv.style.cssText = 'position:absolute;bottom:80px;left:50%;transform:translateX(-50%);z-index:10;background:rgba(0,0,0,0.85);color:#fff;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;transition:opacity 0.3s;';
+  unmuteDiv.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF7555" stroke-width="2" stroke-linecap="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg> Click to unmute audio';
+  unmuteDiv.onclick = function() {
+    // Reload iframe without mute
+    iframe.src = 'https://www.youtube.com/embed/' + CONFIG.YOUTUBE_VIDEO_ID +
+      '?autoplay=1&modestbranding=1&rel=0&showinfo=0&controls=0&enablejsapi=1&disablekb=1&fs=0&iv_load_policy=3&playsinline=1&start=' + Math.floor((Date.now() - startedAtGlobal) / 1000);
+    unmuteDiv.style.opacity = '0';
+    setTimeout(function() { unmuteDiv.remove(); }, 300);
+  };
+  document.querySelector('.video-wrapper').appendChild(unmuteDiv);
+  var startedAtGlobal = Date.now();
 
   // Start elapsed timer
   var startedAt = Date.now();
