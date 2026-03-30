@@ -803,7 +803,58 @@ function submitRegistration() {
       })
     }).catch(function(e) { console.log('WATI error:', e); });
 
-    return Promise.all([emailPromise, whatsappPromise]);
+    // Schedule day-before reminder email
+    var webinarDt = new Date(selectedSession.datetime);
+    var dayBeforeDt = new Date(webinarDt.getTime() - 24 * 60 * 60 * 1000);
+    var now = new Date();
+    var emailParams = {
+      FIRSTNAME: data.firstName,
+      FULLNAME: data.fullName,
+      WEBINAR_DATE: selectedSession.dayLabel,
+      WEBINAR_SLOT: selectedSession.slot,
+      WEBINAR_DATETIME: selectedSession.datetime,
+      EMAIL: data.email
+    };
+
+    var scheduledEmails = [];
+
+    // Only schedule if day-before is in the future
+    if (dayBeforeDt > now) {
+      scheduledEmails.push(
+        fetch('https://api.brevo.com/v3/smtp/email', {
+          method: 'POST',
+          headers: { 'accept':'application/json', 'content-type':'application/json', 'api-key': CONFIG.BREVO_API_KEY },
+          body: JSON.stringify({
+            templateId: 593,
+            to: [{ email: data.email, name: data.fullName }],
+            params: emailParams,
+            scheduledAt: dayBeforeDt.toISOString()
+          })
+        }).catch(function(e) { console.log('Day-before email error:', e); })
+      );
+    }
+
+    // Schedule 10-min-before reminder email
+    var tenMinBeforeDt = new Date(webinarDt.getTime() - 10 * 60 * 1000);
+    if (tenMinBeforeDt > now) {
+      scheduledEmails.push(
+        fetch('https://api.brevo.com/v3/smtp/email', {
+          method: 'POST',
+          headers: { 'accept':'application/json', 'content-type':'application/json', 'api-key': CONFIG.BREVO_API_KEY },
+          body: JSON.stringify({
+            templateId: 594,
+            to: [{ email: data.email, name: data.fullName }],
+            params: emailParams,
+            scheduledAt: tenMinBeforeDt.toISOString()
+          })
+        }).catch(function(e) { console.log('10-min email error:', e); })
+      );
+    }
+
+    // No-show follow-up is handled separately via admin page (noshow-check.html)
+    // It checks ATTENDED attribute 24h after webinar and sends template 595
+
+    return Promise.all([emailPromise, whatsappPromise].concat(scheduledEmails));
   })
   .then(function() {
     var params = new URLSearchParams({
