@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Session: 3D Event Planning | Spalba</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Roboto',sans-serif;background:#0d1a3a;color:#fff;min-height:100vh;}
+:root{
+  --blue:#2384E5;--blue-dark:#0178CF;--orange:#FF7555;
+  --navy:#0d1a3a;--bg:#F3F2F1;--white:#fff;
+  --border:#e8e6e3;--muted:#888;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+@keyframes pulse-live{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.5)}70%{box-shadow:0 0 0 8px rgba(239,68,68,0)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideInRight{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes ctaSlideUp{from{opacity:0;transform:translateY(100%)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes countPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+
+/* NAV */
+.nav{background:rgba(13,26,58,0.95);border-bottom:1px solid rgba(255,255,255,0.08);padding:12px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);}
+.logo-text{font-size:20px;font-weight:700;color:#fff;letter-spacing:2px;text-transform:uppercase;}
+.logo-text span{color:var(--orange);}
+.nav-live{display:flex;align-items:center;gap:8px;}
+.live-dot{width:8px;height:8px;background:#ef4444;border-radius:50%;animation:pulse-live 2s infinite;}
+.live-badge{background:#ef4444;color:#fff;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:4px;}
+.nav-viewers{font-size:13px;color:rgba(255,255,255,0.5);}
+
+/* LAYOUT */
+.webinar-layout{display:grid;grid-template-columns:1fr 360px;height:calc(100vh - 56px);overflow:hidden;}
+
+/* VIDEO AREA */
+.video-area{display:flex;flex-direction:column;background:#000;position:relative;}
+.video-wrapper{flex:1;position:relative;background:#000;display:flex;align-items:center;justify-content:center;}
+.video-wrapper iframe{width:100%;height:100%;border:none;}
+
+/* Countdown overlay */
+.countdown-overlay{position:absolute;inset:0;background:linear-gradient(135deg,#0d1a3a 0%,#1a2d5a 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;text-align:center;padding:40px;}
+.countdown-overlay.hidden{display:none;}
+.countdown-tag{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:20px;}
+.countdown-title{font-size:clamp(20px,3vw,32px);font-weight:700;color:#fff;margin-bottom:8px;}
+.countdown-sub{font-size:15px;color:rgba(255,255,255,0.4);margin-bottom:40px;}
+.countdown-timer{display:flex;gap:16px;margin-bottom:40px;}
+.countdown-unit{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:20px 24px;min-width:90px;text-align:center;}
+.countdown-num{font-size:42px;font-weight:700;color:#fff;line-height:1;letter-spacing:-0.02em;}
+.countdown-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:6px;}
+.countdown-note{font-size:13px;color:rgba(255,255,255,0.25);display:flex;align-items:center;gap:8px;}
+.countdown-note .ldot{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:blink 2s infinite;}
+
+/* Video bar */
+.video-bar{background:rgba(13,26,58,0.95);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.08);}
+.vb-info{display:flex;align-items:center;gap:12px;}
+.vb-speaker-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--orange));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;}
+.vb-speaker-name{font-size:14px;font-weight:600;color:#fff;}
+.vb-speaker-title{font-size:12px;color:rgba(255,255,255,0.4);}
+.vb-live-tag{display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,0.5);}
+.vb-elapsed{font-size:13px;color:rgba(255,255,255,0.3);font-variant-numeric:tabular-nums;}
+
+/* CHAT SIDEBAR */
+.chat-sidebar{background:#0a1230;border-left:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;}
+.chat-header{padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;}
+.chat-header h3{font-size:14px;font-weight:700;color:#fff;}
+.chat-count{font-size:12px;color:rgba(255,255,255,0.3);}
+.chat-messages{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:14px;}
+.chat-msg{animation:fadeIn 0.3s ease;}
+.chat-msg-name{font-size:12px;font-weight:600;color:var(--blue);margin-bottom:3px;}
+.chat-msg-name.host{color:var(--orange);}
+.chat-msg-text{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.55;}
+.chat-msg-time{font-size:10px;color:rgba(255,255,255,0.15);margin-top:3px;}
+.chat-input-wrap{padding:16px 20px;border-top:1px solid rgba(255,255,255,0.06);}
+.chat-input-row{display:flex;gap:8px;}
+.chat-input{flex:1;padding:10px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#fff;font-size:13px;font-family:'Roboto',sans-serif;outline:none;}
+.chat-input::placeholder{color:rgba(255,255,255,0.2);}
+.chat-input:focus{border-color:var(--blue);}
+.chat-send{padding:10px 16px;background:var(--blue);border:none;border-radius:8px;color:#fff;font-size:13px;font-weight:700;font-family:'Roboto',sans-serif;cursor:pointer;transition:background 0.2s;}
+.chat-send:hover{background:var(--blue-dark);}
+.chat-input-note{font-size:11px;color:rgba(255,255,255,0.15);margin-top:8px;text-align:center;}
+
+/* CTA OVERLAY (appears after video) */
+.cta-overlay{position:fixed;inset:0;background:rgba(13,26,58,0.92);backdrop-filter:blur(6px);z-index:200;display:none;align-items:center;justify-content:center;padding:24px;}
+.cta-overlay.show{display:flex;}
+.cta-card{background:#fff;border-radius:24px;padding:52px 48px;max-width:640px;width:100%;text-align:center;animation:ctaSlideUp 0.5s ease;color:var(--navy);}
+.cta-card .tag{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;}
+.cta-card h2{font-size:clamp(22px,3vw,34px);font-weight:700;color:var(--navy);margin-bottom:10px;letter-spacing:-0.01em;}
+.cta-card h2 em{color:var(--orange);font-style:normal;}
+.cta-card p{font-size:16px;color:#888;margin-bottom:36px;line-height:1.7;}
+.cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.cta-btn{padding:16px 36px;border-radius:12px;font-size:15px;font-weight:700;font-family:'Roboto',sans-serif;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;border:none;}
+.cta-btn.primary{background:var(--orange);color:#fff;}
+.cta-btn.primary:hover{background:#fd6640;transform:translateY(-2px);box-shadow:0 6px 24px rgba(255,117,85,0.3);}
+.cta-btn.secondary{background:#eef5fd;color:var(--blue);border:1px solid #c5dcf7;}
+.cta-btn.secondary:hover{background:#dcedfb;transform:translateY(-2px);}
+.cta-footer{font-size:12px;color:#ccc;margin-top:20px;}
+
+/* MOBILE */
+@media(max-width:900px){
+  .webinar-layout{grid-template-columns:1fr;grid-template-rows:auto 1fr;}
+  .video-area{min-height:50vh;}
+  .chat-sidebar{max-height:50vh;}
+  .nav{padding:12px 20px;}
+  .countdown-timer{gap:8px;}
+  .countdown-unit{min-width:60px;padding:14px 12px;}
+  .countdown-num{font-size:28px;}
+  .cta-card{padding:36px 24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<div class="nav">
+  <img src="logo.png" alt="Spalba" style="height:32px;width:auto;">
+  <div class="nav-live">
+    <div class="live-dot"></div>
+    <div class="live-badge">LIVE</div>
+    <div class="nav-viewers"><span id="viewer-count">0</span> watching</div>
+  </div>
+</div>
+
+<!-- ========== WEBINAR LAYOUT ========== -->
+<div class="webinar-layout">
+
+  <!-- VIDEO AREA -->
+  <div class="video-area">
+    <div class="video-wrapper">
+
+      <!-- Countdown (shown before start time) -->
+      <div class="countdown-overlay" id="countdown-overlay">
+        <div class="countdown-tag">Your Session Starts Soon</div>
+        <div class="countdown-title">How Elite Event Planners Create Stunning 3D Event Setups</div>
+        <div class="countdown-sub">with Raghav Bali &middot; Founder's Office, Spalba</div>
+        <div class="countdown-timer" id="countdown-timer">
+          <div class="countdown-unit"><div class="countdown-num" id="cd-hours">00</div><div class="countdown-label">Hours</div></div>
+          <div class="countdown-unit"><div class="countdown-num" id="cd-mins">00</div><div class="countdown-label">Minutes</div></div>
+          <div class="countdown-unit"><div class="countdown-num" id="cd-secs">00</div><div class="countdown-label">Seconds</div></div>
+        </div>
+        <div class="countdown-note"><span class="ldot"></span>We'll start automatically when the timer hits zero</div>
+      </div>
+
+      <!-- YouTube Embed (hidden until start) -->
+      <iframe id="yt-player"
+        src=""
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="display:none;">
+      </iframe>
+    </div>
+
+    <!-- Video Info Bar -->
+    <div class="video-bar">
+      <div class="vb-info">
+        <img src="raghav.jpg" alt="RB" style="width:36px;height:36px;border-radius:50%;object-fit:cover;">
+        <div>
+          <div class="vb-speaker-name">Raghav Bali</div>
+          <div class="vb-speaker-title">Founder's Office, Spalba</div>
+        </div>
+      </div>
+      <div class="vb-live-tag">
+        <div class="live-dot" style="width:6px;height:6px;"></div>
+        <span id="elapsed-time">00:00</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAT SIDEBAR -->
+  <div class="chat-sidebar">
+    <div class="chat-header">
+      <h3>Live Chat</h3>
+      <div class="chat-count" id="chat-count">0 messages</div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <!-- Welcome message -->
+      <div class="chat-msg">
+        <div class="chat-msg-name host">Spalba Team</div>
+        <div class="chat-msg-text">Welcome to the session! Feel free to ask any questions here. Raghav will address them during the Q&amp;A.</div>
+        <div class="chat-msg-time">Just now</div>
+      </div>
+    </div>
+    <div class="chat-input-wrap">
+      <div class="chat-input-row">
+        <input class="chat-input" id="chat-input" type="text" placeholder="Type your question..." onkeydown="if(event.key==='Enter')sendChat()">
+        <button class="chat-send" onclick="sendChat()">Send</button>
+      </div>
+      <div class="chat-input-note">Questions will be addressed during Q&amp;A</div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== POST-VIDEO CTA OVERLAY ========== -->
+<div class="cta-overlay" id="cta-overlay">
+  <div class="cta-card">
+    <div class="tag">Session Complete</div>
+    <h2>Ready to transform how you<br><em>plan and present events?</em></h2>
+    <p>Start using Spalba today. Get access to 500+ premium venue walkthroughs, 3D event setup tools, and automated layout generation.</p>
+    <div class="cta-buttons">
+      <a href="https://spalba.com/pricing?utm_source=webinar&utm_medium=youtube&utm_campaign=BU+webinar" class="cta-btn primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        View Pricing &amp; Subscribe
+      </a>
+      <a href="https://spalba.com/contact-us?utm_source=webinar&utm_medium=youtube&utm_campaign=BU+webinar" class="cta-btn secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Request a Demo
+      </a>
+    </div>
+    <div class="cta-footer">No credit card required for free trial &middot; Cancel anytime</div>
+  </div>
+</div>
+
+<script>
+// =============================================
+// CONFIGURATION - Replace these values
+// =============================================
+var CONFIG = {
+  YOUTUBE_VIDEO_ID: 'yCdd1uRuGCo',
+  VIDEO_DURATION_SEC: 30 * 60,                 // 30 minutes in seconds
+  PRICING_URL: 'https://spalba.com/pricing?utm_source=webinar&utm_medium=youtube&utm_campaign=BU+webinar',
+  CONTACT_URL: 'https://spalba.com/contact-us?utm_source=webinar&utm_medium=youtube&utm_campaign=BU+webinar'
+};
+
+// =============================================
+// STATE
+// =============================================
+var webinarStartTime = null;
+var videoStarted = false;
+var videoEnded = false;
+var elapsedInterval = null;
+var chatMessageCount = 1; // welcome message
+var viewerBase = Math.floor(Math.random() * 30) + 85; // 85-114
+
+// =============================================
+// READ URL PARAMS
+// =============================================
+var params = new URLSearchParams(window.location.search);
+var datetime = params.get('dt');
+var email = params.get('em') || '';
+
+if (datetime) {
+  webinarStartTime = new Date(datetime);
+} else {
+  // If no datetime, start immediately (for testing / direct access)
+  webinarStartTime = new Date();
+}
+
+// =============================================
+// COUNTDOWN LOGIC
+// =============================================
+function updateCountdown() {
+  var now = new Date();
+  var diff = webinarStartTime - now;
+
+  if (diff <= 0) {
+    // Time to start!
+    startVideo();
+    return;
+  }
+
+  var hours = Math.floor(diff / 3600000);
+  var mins = Math.floor((diff % 3600000) / 60000);
+  var secs = Math.floor((diff % 60000) / 1000);
+
+  document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+  document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+}
+
+// Run countdown every second
+var countdownInterval = setInterval(function() {
+  updateCountdown();
+}, 1000);
+updateCountdown();
+
+// =============================================
+// START VIDEO
+// =============================================
+function startVideo() {
+  if (videoStarted) return;
+  videoStarted = true;
+  clearInterval(countdownInterval);
+
+  // Hide countdown, show video
+  document.getElementById('countdown-overlay').classList.add('hidden');
+  var iframe = document.getElementById('yt-player');
+  iframe.src = 'https://www.youtube.com/embed/' + CONFIG.YOUTUBE_VIDEO_ID +
+    '?autoplay=1&modestbranding=1&rel=0&showinfo=0&controls=1&enablejsapi=1';
+  iframe.style.display = 'block';
+
+  // Start elapsed timer
+  var startedAt = Date.now();
+  elapsedInterval = setInterval(function() {
+    var elapsed = Math.floor((Date.now() - startedAt) / 1000);
+    var m = Math.floor(elapsed / 60);
+    var s = elapsed % 60;
+    document.getElementById('elapsed-time').textContent =
+      String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+
+    // Show CTA after video duration
+    if (elapsed >= CONFIG.VIDEO_DURATION_SEC && !videoEnded) {
+      videoEnded = true;
+      showCTA();
+    }
+  }, 1000);
+
+  // Start simulated chat
+  startSimulatedChat();
+}
+
+// =============================================
+// SIMULATED CHAT MESSAGES
+// =============================================
+var simulatedMessages = [
+  { time: 15, name: 'Priya M.', text: 'Excited for this session! Been looking for something like this.' },
+  { time: 45, name: 'Arjun K.', text: 'We plan events at Taj regularly. Curious how the 3D walkthrough works.' },
+  { time: 90, name: 'Nisha R.', text: 'This is so relevant. We spend so much time on recces.' },
+  { time: 150, name: 'Vikram S.', text: 'Does this work for outdoor venues too?' },
+  { time: 210, name: 'Spalba Team', text: 'Great question Vikram! Raghav will cover that in the demo section.', host: true },
+  { time: 300, name: 'Meera D.', text: 'The 2D to 3D conversion looks incredible!' },
+  { time: 420, name: 'Rohit P.', text: 'How many venues are available in Bangalore?' },
+  { time: 540, name: 'Ananya B.', text: 'This would save us so much time on client presentations.' },
+  { time: 660, name: 'Spalba Team', text: 'Glad you are finding this useful! Keep your questions coming.', host: true },
+  { time: 780, name: 'Deepak J.', text: 'Can clients also access the 3D walkthrough or just planners?' },
+  { time: 900, name: 'Kavita L.', text: 'We do 30+ events a year at premium properties. This is a game changer.' },
+  { time: 1020, name: 'Rahul G.', text: 'The auto layout feature is amazing. No more manual floor plans!' },
+  { time: 1140, name: 'Sonia T.', text: 'Can we customise the seating arrangements after auto-generate?' },
+  { time: 1260, name: 'Spalba Team', text: 'Absolutely Sonia! Full customisation is possible after auto-generation.', host: true },
+  { time: 1380, name: 'Amit V.', text: 'Just shared this with my team. Everyone needs to see this.' },
+  { time: 1500, name: 'Pooja N.', text: 'How does the pricing work for agencies with multiple planners?' },
+  { time: 1620, name: 'Karan M.', text: 'This is exactly what the industry needed. Finally someone built it.' },
+  { time: 1740, name: 'Spalba Team', text: 'Raghav is about to show the pricing options! Stay tuned.', host: true },
+];
+
+function startSimulatedChat() {
+  var chatStart = Date.now();
+
+  setInterval(function() {
+    var elapsed = (Date.now() - chatStart) / 1000;
+    var container = document.getElementById('chat-messages');
+
+    simulatedMessages.forEach(function(msg) {
+      if (msg.shown) return;
+      if (elapsed >= msg.time) {
+        msg.shown = true;
+        addChatMessage(msg.name, msg.text, msg.host || false);
+      }
+    });
+  }, 2000);
+}
+
+function addChatMessage(name, text, isHost) {
+  var container = document.getElementById('chat-messages');
+  var now = new Date();
+  var timeStr = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+
+  var div = document.createElement('div');
+  div.className = 'chat-msg';
+  div.innerHTML =
+    '<div class="chat-msg-name' + (isHost ? ' host' : '') + '">' + escapeHtml(name) + '</div>' +
+    '<div class="chat-msg-text">' + escapeHtml(text) + '</div>' +
+    '<div class="chat-msg-time">' + timeStr + '</div>';
+
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+
+  chatMessageCount++;
+  document.getElementById('chat-count').textContent = chatMessageCount + ' messages';
+}
+
+function escapeHtml(str) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
+// =============================================
+// USER CHAT
+// =============================================
+function sendChat() {
+  var input = document.getElementById('chat-input');
+  var text = input.value.trim();
+  if (!text) return;
+
+  addChatMessage('You', text, false);
+  input.value = '';
+
+  // Auto-reply after a few seconds
+  setTimeout(function() {
+    addChatMessage('Spalba Team', 'Thanks for your question! Raghav will address this during the Q&A section.', true);
+  }, 3000 + Math.random() * 5000);
+}
+
+// =============================================
+// SHOW POST-VIDEO CTA
+// =============================================
+function showCTA() {
+  document.getElementById('cta-overlay').classList.add('show');
+}
+
+// =============================================
+// VIEWER COUNT SIMULATION
+// =============================================
+(function() {
+  function updateViewers() {
+    var change = Math.floor(Math.random() * 5) - 2; // -2 to +2
+    viewerBase = Math.max(70, Math.min(150, viewerBase + change));
+    document.getElementById('viewer-count').textContent = viewerBase;
+  }
+  updateViewers();
+  setInterval(updateViewers, 8000);
+})();
+</script>
+</body>
+</html>

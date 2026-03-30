@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're Registered! | Spalba Webinar</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Roboto',sans-serif;background:#F3F2F1;color:#0d1a3a;min-height:100vh;}
+:root{
+  --blue:#2384E5;--blue-dark:#0178CF;--orange:#FF7555;
+  --navy:#0d1a3a;--bg:#F3F2F1;--white:#fff;
+  --border:#e8e6e3;--muted:#888;
+}
+@keyframes confetti{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(400px) rotate(720deg);opacity:0}}
+@keyframes checkIn{0%{transform:scale(0)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.nav{background:var(--navy);padding:14px 60px;display:flex;align-items:center;justify-content:center;}
+.logo-text{font-size:22px;font-weight:700;color:#fff;letter-spacing:2px;text-transform:uppercase;}
+.logo-text span{color:var(--orange);}
+
+.main{max-width:680px;margin:0 auto;padding:60px 24px 80px;text-align:center;}
+
+.check-circle{width:80px;height:80px;border-radius:50%;background:#22c55e;margin:0 auto 28px;display:flex;align-items:center;justify-content:center;animation:checkIn 0.5s ease;box-shadow:0 8px 30px rgba(34,197,94,0.25);}
+
+.main h1{font-size:clamp(26px,4vw,40px);font-weight:700;color:var(--navy);margin-bottom:10px;letter-spacing:-0.02em;animation:fadeUp 0.5s ease 0.2s both;}
+.main h1 em{color:var(--orange);font-style:normal;}
+.main .subtitle{font-size:17px;font-weight:300;color:#888;margin-bottom:40px;line-height:1.7;animation:fadeUp 0.5s ease 0.3s both;}
+
+.detail-card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:36px;text-align:left;margin-bottom:32px;animation:fadeUp 0.5s ease 0.4s both;}
+.detail-card h3{font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:20px;}
+.detail-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);}
+.detail-row:last-child{border-bottom:none;}
+.detail-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.detail-icon.blue{background:#eef5fd;color:var(--blue);}
+.detail-icon.orange{background:#fff3f0;color:var(--orange);}
+.detail-icon.green{background:#f0fdf4;color:#22c55e;}
+.detail-text{font-size:14px;color:#555;line-height:1.5;}
+.detail-text b{color:var(--navy);display:block;margin-bottom:2px;font-size:15px;}
+
+.calendar-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--blue);border:none;border-radius:10px;color:#fff;font-size:14px;font-weight:700;font-family:'Roboto',sans-serif;cursor:pointer;transition:all 0.2s;margin-bottom:12px;animation:fadeUp 0.5s ease 0.5s both;}
+.calendar-btn:hover{background:var(--blue-dark);transform:translateY(-2px);}
+
+.expect-card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:36px;text-align:left;margin-top:32px;animation:fadeUp 0.5s ease 0.6s both;}
+.expect-card h3{font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:20px;}
+.expect-list{list-style:none;display:flex;flex-direction:column;gap:16px;}
+.expect-list li{display:flex;gap:12px;font-size:14px;color:#555;line-height:1.6;}
+.expect-list li .num{width:28px;height:28px;border-radius:50%;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--blue);flex-shrink:0;}
+
+.share-note{font-size:13px;color:#bbb;margin-top:32px;line-height:1.7;animation:fadeUp 0.5s ease 0.7s both;}
+
+/* Confetti */
+.confetti-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1000;overflow:hidden;}
+.confetti-piece{position:absolute;width:10px;height:10px;top:-10px;animation:confetti 3s ease-in forwards;}
+
+.footer{background:#080f1e;padding:28px 60px;text-align:center;}
+.footer-text{font-size:12px;color:rgba(255,255,255,0.18);letter-spacing:0.04em;}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <img src="logo.png" alt="Spalba" style="height:36px;width:auto;">
+</div>
+
+<div class="confetti-container" id="confetti"></div>
+
+<div class="main">
+  <div class="check-circle">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+  </div>
+
+  <h1>You're in, <em id="user-name">there</em>!</h1>
+  <p class="subtitle">Your spot for the Spalba training session is confirmed.<br>Check your inbox at <b id="user-email"></b> for the confirmation and joining link.</p>
+
+  <div class="detail-card">
+    <h3>Your Session Details</h3>
+    <div class="detail-row">
+      <div class="detail-icon blue"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+      <div class="detail-text"><b id="detail-day">--</b>Your selected day</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-icon orange"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div class="detail-text"><b id="detail-slot">--</b>India Standard Time (IST)</div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-icon green"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+      <div class="detail-text"><b>45-minute live session</b>Online &middot; Watch from anywhere &middot; Free</div>
+    </div>
+  </div>
+
+  <button class="calendar-btn" onclick="addToCalendar()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+    Add to Google Calendar
+  </button>
+  <br>
+  <span style="font-size:12px;color:#bbb;">So you don't forget</span>
+
+  <div class="expect-card">
+    <h3>What Happens Next</h3>
+    <ol class="expect-list">
+      <li><div class="num">1</div><div><b>Confirmation email + WhatsApp</b> sent right now with your session details and joining link.</div></li>
+      <li><div class="num">2</div><div><b>Reminder the day before</b> your session so you can plan your time.</div></li>
+      <li><div class="num">3</div><div><b>Final reminder 10 minutes before</b> the session starts, with a direct link to join.</div></li>
+      <li><div class="num">4</div><div><b>Join and watch the full session</b> &mdash; see live demos of 3D event setups, virtual venue walkthroughs, and auto-generated layouts.</div></li>
+    </ol>
+  </div>
+
+  <p class="share-note">Know someone who plans events at premium properties?<br>Share this page with them &mdash; they'll thank you later.</p>
+</div>
+
+<div class="footer">
+  <div class="footer-text">&copy; 2026 Spalba Technologies Pvt. Ltd.</div>
+</div>
+
+<script>
+// =============================================
+// CONFIGURATION
+// =============================================
+var WATCH_URL = 'watch.html';
+var LANDING_URL = 'index.html';
+
+// =============================================
+// READ URL PARAMS
+// =============================================
+var params = new URLSearchParams(window.location.search);
+var firstName = params.get('fn') || 'there';
+var email = params.get('em') || '';
+var dayLabel = params.get('day') || '';
+var slot = params.get('slot') || '';
+var datetime = params.get('dt') || '';
+
+// Populate page
+document.getElementById('user-name').textContent = firstName;
+document.getElementById('user-email').textContent = email;
+document.getElementById('detail-day').textContent = dayLabel || 'Your selected day';
+document.getElementById('detail-slot').textContent = slot ? slot + ' IST' : '--';
+
+// If no params, redirect to landing
+if (!email) {
+  document.querySelector('.main').innerHTML =
+    '<div class="check-circle" style="background:var(--orange)">' +
+    '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M12 8v4M12 16h.01"/></svg>' +
+    '</div>' +
+    '<h1>No registration found</h1>' +
+    '<p class="subtitle">Looks like you haven\'t registered yet.</p>' +
+    '<a href="' + LANDING_URL + '" style="display:inline-block;padding:14px 32px;background:var(--orange);color:#fff;border-radius:10px;font-weight:700;text-decoration:none;">Register Now</a>';
+}
+
+// =============================================
+// ADD TO GOOGLE CALENDAR
+// =============================================
+function addToCalendar() {
+  if (!datetime) return;
+
+  var start = new Date(datetime);
+  var end = new Date(start.getTime() + 45 * 60000); // 45 min session
+
+  function toGCalFormat(d) {
+    return d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  }
+
+  var title = encodeURIComponent('Spalba Training Session - 3D Event Planning');
+  var details = encodeURIComponent(
+    'Join your Spalba training session and learn how to create stunning 3D event setups.\n\n' +
+    'Join here: ' + window.location.origin + '/' + WATCH_URL + '?dt=' + encodeURIComponent(datetime) + '&em=' + encodeURIComponent(email)
+  );
+  var location = encodeURIComponent('Online - Link in description');
+
+  var url = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+    '&text=' + title +
+    '&dates=' + toGCalFormat(start) + '/' + toGCalFormat(end) +
+    '&details=' + details +
+    '&location=' + location;
+
+  window.open(url, '_blank');
+}
+
+// =============================================
+// CONFETTI ANIMATION
+// =============================================
+(function() {
+  var container = document.getElementById('confetti');
+  var colors = ['#FF7555', '#2384E5', '#22c55e', '#FFD700', '#0178CF', '#FF69B4'];
+
+  for (var i = 0; i < 60; i++) {
+    var piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + '%';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.animationDelay = Math.random() * 2 + 's';
+    piece.style.animationDuration = (Math.random() * 2 + 2) + 's';
+    piece.style.width = (Math.random() * 8 + 6) + 'px';
+    piece.style.height = (Math.random() * 8 + 6) + 'px';
+    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    piece.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+    container.appendChild(piece);
+  }
+
+  // Remove confetti after animation
+  setTimeout(function() { container.innerHTML = ''; }, 5000);
+})();
+</script>
+</body>
+</html>

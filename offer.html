@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Started with Spalba | Special Webinar Offer</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Roboto',sans-serif;background:#F3F2F1;color:#0d1a3a;min-height:100vh;}
+:root{
+  --blue:#2384E5;--blue-dark:#0178CF;--orange:#FF7555;
+  --navy:#0d1a3a;--bg:#F3F2F1;--white:#fff;
+  --border:#e8e6e3;--muted:#888;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,117,85,0.4)}70%{box-shadow:0 0 0 10px rgba(255,117,85,0)}}
+
+.nav{background:var(--navy);padding:14px 60px;display:flex;align-items:center;justify-content:center;}
+.logo-text{font-size:22px;font-weight:700;color:#fff;letter-spacing:2px;text-transform:uppercase;}
+.logo-text span{color:var(--orange);}
+
+.main{max-width:900px;margin:0 auto;padding:60px 24px 80px;text-align:center;}
+
+.badge{display:inline-flex;align-items:center;gap:8px;background:#eef5fd;border:1px solid #c5dcf7;color:var(--blue);font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:24px;animation:fadeUp 0.4s ease both;}
+
+.main h1{font-size:clamp(28px,4vw,46px);font-weight:700;color:var(--navy);margin-bottom:14px;letter-spacing:-0.02em;animation:fadeUp 0.4s ease 0.1s both;}
+.main h1 em{color:var(--orange);font-style:normal;}
+.main .subtitle{font-size:17px;font-weight:300;color:#888;margin-bottom:56px;line-height:1.7;max-width:640px;margin-left:auto;margin-right:auto;animation:fadeUp 0.4s ease 0.2s both;}
+
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;}
+
+.offer-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:44px 36px;text-align:center;position:relative;overflow:hidden;transition:box-shadow 0.3s,transform 0.3s;animation:fadeUp 0.4s ease 0.3s both;}
+.offer-card:hover{box-shadow:0 12px 40px rgba(0,0,0,0.08);transform:translateY(-4px);}
+.offer-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+.offer-card.pricing::before{background:var(--orange);}
+.offer-card.demo::before{background:var(--blue);}
+
+.offer-icon{width:64px;height:64px;border-radius:16px;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;}
+.offer-card.pricing .offer-icon{background:#fff3f0;color:var(--orange);}
+.offer-card.demo .offer-icon{background:#eef5fd;color:var(--blue);}
+
+.offer-card h2{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.offer-card p{font-size:14px;color:#888;line-height:1.7;margin-bottom:28px;min-height:48px;}
+
+.offer-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:32px;text-align:left;}
+.offer-features li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#555;line-height:1.5;}
+.offer-features li .check{width:20px;height:20px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.offer-card.pricing .check{background:#fff3f0;}
+.offer-card.demo .check{background:#eef5fd;}
+
+.offer-btn{display:block;width:100%;padding:16px 24px;border-radius:12px;font-size:15px;font-weight:700;font-family:'Roboto',sans-serif;cursor:pointer;text-decoration:none;text-align:center;transition:all 0.2s;border:none;}
+.offer-card.pricing .offer-btn{background:var(--orange);color:#fff;animation:pulse 2s infinite;}
+.offer-card.pricing .offer-btn:hover{background:#fd6640;transform:translateY(-2px);}
+.offer-card.demo .offer-btn{background:var(--blue);color:#fff;}
+.offer-card.demo .offer-btn:hover{background:var(--blue-dark);transform:translateY(-2px);}
+
+.offer-tag{position:absolute;top:16px;right:16px;background:var(--orange);color:#fff;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:6px;}
+
+.trust-bar{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;animation:fadeUp 0.4s ease 0.5s both;}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:13px;color:#aaa;}
+.trust-item svg{flex-shrink:0;}
+
+.footer{background:#080f1e;padding:28px 60px;text-align:center;margin-top:60px;}
+.footer-text{font-size:12px;color:rgba(255,255,255,0.18);letter-spacing:0.04em;}
+
+@media(max-width:700px){
+  .cards{grid-template-columns:1fr;}
+  .nav{padding:14px 24px;}
+}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <img src="logo.png" alt="Spalba" style="height:36px;width:auto;">
+</div>
+
+<div class="main">
+  <div class="badge">You Just Watched the Full Session</div>
+
+  <h1>Ready to transform<br>how you <em>plan events?</em></h1>
+  <p class="subtitle">You've seen what Spalba can do. Now choose how you want to get started. No risk, no commitment needed.</p>
+
+  <div class="cards">
+    <!-- PRICING CARD -->
+    <div class="offer-card pricing">
+      <div class="offer-tag">Most Popular</div>
+      <div class="offer-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h2>Subscribe to Spalba Pro</h2>
+      <p>Get instant access to 3D venue walkthroughs, event layout tools, and 500+ premium properties.</p>
+      <ul class="offer-features">
+        <li><div class="check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#FF7555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Full 3D digital twin access for 500+ venues</li>
+        <li><div class="check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#FF7555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>2D to 3D event layout conversion</li>
+        <li><div class="check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#FF7555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Auto-generated seating and stage layouts</li>
+        <li><div class="check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#FF7555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Downloadable layouts to share with clients</li>
+        <li><div class="check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#FF7555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Monthly and yearly plans available</li>
+      </ul>
+      <a href="https://spalba.com/pricing?utm_source=webinar&utm_medium=youtube&utm_campaign=BU+webinar" class="offer-btn">View Pricing &amp; Subscribe</a>
+    </div>
+
+    <!-- DEMO CARD -->
+    <div class="offer-card demo">
+      <div class="offer-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h2>Request a Personal Demo</h2>
+      <p>Want to see how Spalba works for your specific use case? Our team will walk you through it.</p>
+      <ul class="offer-features">
+        <li><div class="check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#2384E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Personalised walkthrough for your event type</li>
+        <li><div class="check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#2384E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>See your actual venues on the platform</li>
+        <li><div class="check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#2384E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Get answers to all your questions live</li>
+        <li><div class="check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#2384E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Custom onboarding plan for your team</li>
+        <li><div class="check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#2384E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>No commitment required</li>
+      </ul>
+      <a href="https://spalba.com/contact-us?utm_source=webinar&utm_medium=youtube&utm_campaign=BU+webinar" class="offer-btn">Request a Demo</a>
+    </div>
+  </div>
+
+  <div class="trust-bar">
+    <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>No credit card required</div>
+    <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Trusted by 500+ event professionals</div>
+    <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Setup in under 5 minutes</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-text">&copy; 2026 Spalba Technologies Pvt. Ltd.</div>
+</div>
+</body>
+</html>

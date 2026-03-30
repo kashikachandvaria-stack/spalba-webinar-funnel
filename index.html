@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Training: How Elite Event Planners Create Stunning 3D Event Setups | Spalba</title>
+<meta name="description" content="Free 45-minute session for event planners. Learn to create 3D event setups, walk premium venues virtually, and win client approvals instantly with Spalba.">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Roboto',sans-serif;background:#F3F2F1;color:#0d1a3a;overflow-x:hidden;}
+:root{
+  --blue:#2384E5;--blue-dark:#0178CF;--orange:#FF7555;
+  --navy:#0d1a3a;--bg:#F3F2F1;--white:#fff;
+  --border:#e8e6e3;--muted:#888;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+@keyframes modalIn{from{opacity:0;transform:scale(0.96)}to{opacity:1;transform:scale(1)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,117,85,0.4)}70%{box-shadow:0 0 0 10px rgba(255,117,85,0)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.topbar{background:var(--orange);color:#fff;text-align:center;padding:10px 20px;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;}
+.topbar b{color:#fff;font-weight:700;}
+.topbar-sep{display:inline-block;margin:0 14px;opacity:0.4;}
+.ldot{display:inline-block;width:6px;height:6px;background:rgba(255,255,255,0.9);border-radius:50%;margin-right:10px;vertical-align:middle;animation:blink 2s infinite;}
+
+.nav{background:var(--navy);border-bottom:1px solid rgba(255,255,255,0.08);padding:12px 60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.logo-text{font-size:22px;font-weight:700;color:#fff;letter-spacing:2px;text-transform:uppercase;}
+.logo-text span{color:var(--orange);}
+.nav-cta{padding:10px 24px;background:var(--orange);border:none;border-radius:8px;color:#fff;font-size:14px;font-weight:700;font-family:'Roboto',sans-serif;cursor:pointer;transition:all 0.2s;}
+.nav-cta:hover{background:#fd6640;transform:translateY(-1px);}
+
+.hero{background:var(--white);padding:72px 60px 80px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.hero-glow{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(35,132,229,0.06) 0%,transparent 65%);top:-150px;right:-100px;pointer-events:none;}
+.hero-glow2{position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(255,117,85,0.05) 0%,transparent 65%);bottom:-80px;left:0;pointer-events:none;}
+.hero-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 400px;gap:64px;align-items:center;position:relative;z-index:2;}
+.htag{display:inline-flex;align-items:center;gap:8px;background:#eef5fd;border:1px solid #c5dcf7;color:var(--blue);font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:28px;}
+.htag .dot{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:blink 1.5s infinite;}
+.hero h1{font-size:clamp(28px,3.8vw,52px);font-weight:700;line-height:1.12;letter-spacing:-0.022em;color:var(--navy);margin-bottom:22px;}
+.hero h1 .o{color:var(--orange);}
+.hero-sub{font-size:17px;font-weight:300;color:#666;line-height:1.8;margin-bottom:36px;max-width:520px;}
+.hero-bullets{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:40px;}
+.hero-bullets li{display:flex;align-items:flex-start;gap:11px;font-size:15px;color:#444;line-height:1.5;}
+.hbullet-icon{width:20px;height:20px;border-radius:50%;background:#eef5fd;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;}
+.hero-cta-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+.btn-main{padding:16px 40px;background:var(--orange);border:none;border-radius:10px;color:#fff;font-size:16px;font-weight:700;font-family:'Roboto',sans-serif;cursor:pointer;letter-spacing:0.02em;transition:all 0.2s;animation:pulse 2s infinite;}
+.btn-main:hover{background:#fd6640;transform:translateY(-2px);}
+.hero-micro{font-size:12px;color:#bbb;letter-spacing:0.03em;}
+
+.hero-card{display:flex;flex-direction:column;gap:12px;}
+.hstat-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px 26px;position:relative;overflow:hidden;transition:box-shadow 0.2s;}
+.hstat-card:hover{box-shadow:0 6px 24px rgba(35,132,229,0.08);}
+.hstat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.hstat-card.c1::before{background:var(--blue);}
+.hstat-card.c2::before{background:var(--orange);}
+.hstat-card.c3::before{background:var(--blue-dark);}
+.hstat-num{font-size:38px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-0.02em;margin-bottom:6px;}
+.hstat-num span{color:var(--orange);}
+.hstat-num.blue span,.hstat-num.blue{color:var(--blue);}
+.hstat-desc{font-size:13px;color:#777;line-height:1.55;max-width:260px;}
+.hstat-icon{position:absolute;top:20px;right:22px;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;}
+.hstat-card.c1 .hstat-icon{background:#eef5fd;color:var(--blue);}
+.hstat-card.c2 .hstat-icon{background:#fff3f0;color:var(--orange);}
+.hstat-card.c3 .hstat-icon{background:#e6f3ff;color:var(--blue-dark);}
+.hcard-cta{display:block;width:100%;padding:14px 20px;background:var(--orange);border:none;border-radius:12px;color:#fff;font-size:15px;font-weight:700;font-family:'Roboto',sans-serif;cursor:pointer;letter-spacing:0.02em;transition:all 0.2s;text-align:center;}
+.hcard-cta:hover{background:#fd6640;transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,117,85,0.3);}
+
+.proof{background:var(--white);border-bottom:1px solid var(--border);padding:22px 60px;}
+.proof-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.proof-lbl{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#ccc;white-space:nowrap;}
+.proof-div{width:1px;height:18px;background:var(--border);}
+.proof-logos{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+.proof-logo-item{background:#f8f8f8;border:1px solid var(--border);border-radius:8px;padding:10px 18px;display:flex;align-items:center;justify-content:center;height:48px;}
+.proof-logo-item img{height:24px;width:auto;max-width:100px;object-fit:contain;filter:grayscale(100%) opacity(0.6);transition:filter 0.3s;}
+.proof-logo-item:hover img{filter:grayscale(0%) opacity(1);}
+
+.speaker-section{background:var(--white);border-bottom:1px solid var(--border);padding:72px 60px;}
+.speaker-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:56px;align-items:center;}
+.speaker-photo-wrap{position:relative;}
+.speaker-photo{width:240px;height:240px;border-radius:50%;display:block;margin:0 auto;border:4px solid #eef5fd;box-shadow:0 8px 40px rgba(35,132,229,0.15);}
+.speaker-badge{position:absolute;bottom:12px;right:16px;background:var(--orange);color:#fff;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 11px;border-radius:20px;}
+.speaker-tag{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;}
+.speaker-name{font-size:clamp(22px,2.5vw,34px);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:6px;letter-spacing:-0.01em;}
+.speaker-title{font-size:15px;font-weight:500;color:var(--orange);margin-bottom:20px;}
+.speaker-bio{font-size:15px;font-weight:300;color:#666;line-height:1.85;max-width:560px;}
+
+.section{padding:80px 60px;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.stag{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;}
+.section h2{font-size:clamp(24px,2.8vw,38px);font-weight:700;color:var(--navy);line-height:1.2;letter-spacing:-0.01em;max-width:680px;margin-bottom:48px;}
+.section h2 em{color:var(--orange);font-style:normal;}
+.section h2 .b{color:var(--blue);}
+
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;}
+.stat-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:36px 28px;border-top:3px solid var(--blue);}
+.stat-card:nth-child(2){border-top-color:var(--orange);}
+.stat-card:nth-child(3){border-top-color:var(--blue-dark);}
+.sn{font-size:50px;font-weight:700;color:var(--navy);line-height:1;margin-bottom:10px;letter-spacing:-0.02em;}
+.sn sup{font-size:24px;color:var(--orange);}
+.sd{font-size:14px;color:var(--muted);line-height:1.6;}
+.problem-quote{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:0 12px 12px 0;padding:28px 32px;font-size:17px;font-style:italic;font-weight:300;color:#555;line-height:1.75;max-width:720px;}
+
+.shift-list{display:flex;flex-direction:column;gap:10px;}
+.shift-item{display:grid;grid-template-columns:1fr 40px 1fr;background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:box-shadow 0.2s;}
+.shift-item:hover{box-shadow:0 4px 20px rgba(35,132,229,0.07);}
+.sbefore{padding:22px 28px;font-size:14px;color:#bbb;line-height:1.6;text-decoration:line-through;text-decoration-color:rgba(255,117,85,0.45);}
+.sarrow{display:flex;align-items:center;justify-content:center;color:#ddd;font-size:16px;}
+.safter{padding:22px 28px;font-size:14px;font-weight:500;color:var(--navy);line-height:1.6;border-left:1px solid var(--border);background:#fafafa;}
+
+.recce-section{background:var(--navy);padding:80px 60px;}
+.recce-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.recce-left .stag{color:#7ab8f5;}
+.recce-left h2{font-size:clamp(24px,2.8vw,38px);font-weight:700;color:#fff;line-height:1.2;letter-spacing:-0.01em;margin-bottom:18px;}
+.recce-left h2 em{color:var(--orange);font-style:normal;}
+.recce-left p{font-size:16px;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.85;margin-bottom:32px;}
+.recce-savings{display:flex;flex-direction:column;gap:14px;}
+.saving-row{display:flex;align-items:center;gap:14px;padding:16px 20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;}
+.saving-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.saving-text{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.5;}
+.saving-text b{color:#fff;font-weight:600;display:block;margin-bottom:2px;}
+.recce-right{display:flex;flex-direction:column;gap:16px;}
+.recce-stat{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:28px 26px;border-left:3px solid var(--orange);}
+.recce-stat:nth-child(2){border-left-color:var(--blue);}
+.recce-stat:nth-child(3){border-left-color:#7ab8f5;}
+.rs-num{font-size:40px;font-weight:700;color:#fff;line-height:1;margin-bottom:6px;letter-spacing:-0.02em;}
+.rs-num span{color:var(--orange);}
+.rs-label{font-size:14px;color:rgba(255,255,255,0.45);line-height:1.55;}
+
+.inside-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.inside-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:32px 26px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.inside-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.inside-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);}
+.inside-card:nth-child(2)::before{background:var(--orange);}
+.inside-card:nth-child(3)::before{background:var(--blue-dark);}
+.ic-n{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#ddd;margin-bottom:18px;}
+.ic-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.ic-t{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:10px;line-height:1.3;}
+.ic-b{font-size:14px;color:var(--muted);line-height:1.7;}
+
+.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;}
+.who-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:22px 18px;display:flex;align-items:center;gap:12px;transition:border-color 0.2s,box-shadow 0.2s;}
+.who-card:hover{border-color:var(--blue);box-shadow:0 2px 14px rgba(35,132,229,0.09);}
+.wcheck{width:24px;height:24px;border-radius:50%;background:#eef5fd;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.who-card span{font-size:14px;font-weight:500;color:var(--navy);}
+
+.hotels-wrap{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+.hotel-tag{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:14px 22px;display:flex;align-items:center;justify-content:center;height:60px;transition:border-color 0.2s,box-shadow 0.2s;}
+.hotel-tag:hover{border-color:#c5dcf7;box-shadow:0 2px 12px rgba(35,132,229,0.08);}
+.hotel-tag img{height:28px;width:auto;max-width:110px;object-fit:contain;}
+.hotel-tag.text-tag{font-size:13px;font-weight:700;color:var(--blue);}
+
+.final-section{background:var(--navy);padding:80px 60px;}
+.final-inner{max-width:700px;margin:0 auto;text-align:center;}
+.final-inner h2{font-size:clamp(26px,3vw,42px);font-weight:700;color:#fff;line-height:1.18;letter-spacing:-0.015em;margin-bottom:18px;}
+.final-inner h2 em{color:var(--orange);font-style:normal;}
+.final-inner p{font-size:16px;font-weight:300;color:rgba(255,255,255,0.4);line-height:1.8;margin-bottom:36px;}
+.final-btn{padding:18px 48px;background:var(--orange);border:none;border-radius:10px;color:#fff;font-size:17px;font-weight:700;font-family:'Roboto',sans-serif;cursor:pointer;letter-spacing:0.02em;transition:all 0.2s;animation:pulse 2s infinite;}
+.final-btn:hover{background:#fd6640;transform:translateY(-2px);}
+.final-micro{font-size:12px;color:rgba(255,255,255,0.25);margin-top:16px;letter-spacing:0.03em;}
+
+.footer{background:#080f1e;padding:28px 60px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-text{font-size:12px;color:rgba(255,255,255,0.18);letter-spacing:0.04em;}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(13,26,58,0.75);backdrop-filter:blur(4px);z-index:999;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal{background:#fff;border-radius:20px;padding:40px;max-width:520px;width:100%;animation:modalIn 0.25s ease;position:relative;max-height:90vh;overflow-y:auto;}
+.modal-close{position:absolute;top:18px;right:20px;background:none;border:none;cursor:pointer;font-size:22px;color:#bbb;line-height:1;}
+.modal-close:hover{color:#555;}
+.modal-tag{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;}
+.modal-title{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.modal-sub{font-size:14px;color:#888;margin-bottom:28px;line-height:1.6;}
+
+/* Step indicator */
+.steps{display:flex;align-items:center;gap:0;margin-bottom:28px;}
+.step-dot{width:32px;height:32px;border-radius:50%;background:#F3F2F1;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#bbb;transition:all 0.3s;}
+.step-dot.active{background:var(--blue);border-color:var(--blue);color:#fff;}
+.step-dot.done{background:#22c55e;border-color:#22c55e;color:#fff;}
+.step-line{flex:1;height:2px;background:var(--border);transition:background 0.3s;}
+.step-line.active{background:var(--blue);}
+
+/* Form fields */
+.mform-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+.mform-row.full{grid-template-columns:1fr;}
+.mfield{position:relative;}
+.mfield label{display:block;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#aaa;margin-bottom:6px;}
+.mfield input,.mfield select{width:100%;padding:12px 14px;background:#F3F2F1;border:1px solid var(--border);border-radius:8px;color:var(--navy);font-size:14px;font-family:'Roboto',sans-serif;outline:none;transition:border-color 0.2s;}
+.mfield input:focus,.mfield select:focus{border-color:var(--blue);}
+.mfield input::placeholder{color:#bbb;}
+.mfield .error-msg{font-size:11px;color:#e53e3e;margin-top:4px;display:none;}
+.mfield.has-error input,.mfield.has-error select{border-color:#e53e3e;}
+.mfield.has-error .error-msg{display:block;}
+
+/* Day & Slot selectors */
+.day-label,.slot-label{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#bbb;margin-bottom:12px;}
+.day-row{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;}
+.day-btn{flex:1;min-width:100px;padding:13px 10px;background:#F3F2F1;border:1px solid var(--border);border-radius:10px;cursor:pointer;text-align:center;transition:all 0.18s;}
+.day-btn:hover{border-color:var(--blue);}
+.day-btn.active{background:#eef5fd;border-color:var(--blue);border-width:2px;}
+.day-btn .db-day{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#aaa;margin-bottom:4px;}
+.day-btn .db-date{font-size:16px;font-weight:700;color:var(--navy);}
+.day-btn .db-month{font-size:12px;color:#888;}
+.day-btn.active .db-day{color:var(--blue);}
+.slot-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px;}
+.slot-btn{padding:14px;background:#F3F2F1;border:1px solid var(--border);border-radius:10px;cursor:pointer;text-align:center;transition:all 0.18s;}
+.slot-btn:hover{border-color:var(--blue);}
+.slot-btn.active{background:#eef5fd;border-color:var(--blue);border-width:2px;}
+.slot-btn .sb-time{font-size:16px;font-weight:700;color:var(--navy);}
+.slot-btn .sb-tz{font-size:12px;color:#aaa;margin-top:2px;}
+.slot-btn.active .sb-time{color:var(--blue);}
+.seats-notice{background:#fff8f6;border:1px solid #ffd6cb;border-radius:8px;padding:12px 16px;font-size:13px;color:#c0542a;display:flex;align-items:center;gap:8px;margin-bottom:24px;}
+.seats-notice span{width:7px;height:7px;background:var(--orange);border-radius:50%;flex-shrink:0;animation:blink 1.5s infinite;}
+.btn-next,.btn-confirm{width:100%;padding:16px;background:var(--orange);border:none;border-radius:10px;color:#fff;font-size:16px;font-weight:700;font-family:'Roboto',sans-serif;cursor:pointer;letter-spacing:0.02em;transition:all 0.2s;}
+.btn-next:hover,.btn-confirm:hover{background:#fd6640;}
+.btn-next:disabled,.btn-confirm:disabled{background:#ddd;cursor:not-allowed;}
+.btn-back{width:100%;padding:12px;background:none;border:1px solid var(--border);border-radius:10px;color:#888;font-size:14px;font-weight:500;font-family:'Roboto',sans-serif;cursor:pointer;margin-top:10px;transition:all 0.2s;}
+.btn-back:hover{border-color:var(--blue);color:var(--blue);}
+.modal-micro{font-size:11px;color:#bbb;text-align:center;margin-top:12px;}
+
+/* Loading spinner */
+.spinner{display:inline-block;width:20px;height:20px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.6s linear infinite;vertical-align:middle;margin-right:8px;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Step visibility */
+.modal-step{display:none;}
+.modal-step.active{display:block;animation:slideUp 0.3s ease;}
+
+@media(max-width:900px){
+  .nav,.hero,.section,.proof,.recce-section,.final-section,.footer,.speaker-section{padding-left:24px;padding-right:24px;}
+  .hero-grid,.recce-inner{grid-template-columns:1fr;gap:40px;}
+  .hero-card{display:none;}
+  .stat-grid,.inside-grid{grid-template-columns:1fr;}
+  .shift-item{grid-template-columns:1fr;}
+  .sarrow{display:none;}
+  .safter{border-left:none;border-top:1px solid var(--border);}
+  .speaker-inner{grid-template-columns:1fr;gap:32px;text-align:center;}
+  .speaker-bio{max-width:100%;}
+  .mform-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== TOP BAR ========== -->
+<div class="topbar">
+  <span class="ldot"></span>
+  Free Webinar <span class="topbar-sep">|</span> 45 Minutes <span class="topbar-sep">|</span> Limited Spots &mdash; Register Now
+</div>
+
+<!-- ========== NAV ========== -->
+<div class="nav">
+  <img src="logo.png" alt="Spalba" style="height:36px;width:auto;">
+  <button class="nav-cta" onclick="openModal()">Reserve Your Spot</button>
+</div>
+
+<!-- ========== HERO ========== -->
+<div class="hero">
+  <div class="hero-glow"></div><div class="hero-glow2"></div>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="htag"><span class="dot"></span>Free Training for Event Professionals</div>
+      <h1>Your Client Said<br><span class="o">"Let Me Think<br>About It."</span><br>Here Is Why.</h1>
+      <p class="hero-sub">The best event planners in India are no longer sending proposals and waiting. They are showing their clients the full event before it happens and walking out with a yes. This session shows you exactly how.</p>
+      <ul class="hero-bullets">
+        <li><div class="hbullet-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#2384E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Turn a 2D floor plan into a full 3D event setup in minutes</li>
+        <li><div class="hbullet-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#2384E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Select your guest count and get a default layout instantly, then customise it for your client</li>
+        <li><div class="hbullet-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#2384E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Walk through any premium venue virtually before the first site visit</li>
+        <li><div class="hbullet-icon"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#2384E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Show clients a 3D mock setup of the event with real dimensions</li>
+      </ul>
+      <div class="hero-cta-row">
+        <button class="btn-main" onclick="openModal()">Reserve My Free Spot</button>
+        <span class="hero-micro">Free &middot; 45 minutes &middot; No credit card</span>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hstat-card c1">
+        <div class="hstat-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <div class="hstat-num blue">3D</div>
+        <div class="hstat-desc">Walk venues in 3D, measure dimensions, and build a complete event mock setup before your first site visit</div>
+      </div>
+      <div class="hstat-card c2">
+        <div class="hstat-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <div class="hstat-num">68<span>%</span></div>
+        <div class="hstat-desc">Of clients felt unsure about a proposal until they could truly picture the event</div>
+      </div>
+      <div class="hstat-card c3">
+        <div class="hstat-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="hstat-num">45<span>min</span></div>
+        <div class="hstat-desc">Free online session &middot; Watch from anywhere</div>
+      </div>
+      <button class="hcard-cta" onclick="openModal()">Reserve My Free Spot &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PROOF BAR ========== -->
+<div class="proof">
+  <div class="proof-inner">
+    <div class="proof-lbl">Used by planners at</div>
+    <div class="proof-div"></div>
+    <div class="proof-logos">
+      <div class="proof-logo-item"><img src="https://logo.clearbit.com/tajhotels.com" alt="Taj Hotels"></div>
+      <div class="proof-logo-item"><img src="https://logo.clearbit.com/hyatt.com" alt="Hyatt"></div>
+      <div class="proof-logo-item"><img src="https://logo.clearbit.com/theleela.com" alt="The Leela"></div>
+      <div class="proof-logo-item"><img src="https://logo.clearbit.com/oberoihotels.com" alt="Oberoi"></div>
+      <div class="proof-logo-item"><img src="https://logo.clearbit.com/accor.com" alt="Accor"></div>
+      <div class="proof-logo-item"><img src="https://logo.clearbit.com/itchotels.com" alt="ITC Hotels"></div>
+      <div class="proof-logo-item"><img src="https://logo.clearbit.com/marriott.com" alt="JW Marriott"></div>
+      <span style="font-size:13px;font-weight:600;color:#aaa;">+ 500 venues</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SPEAKER ========== -->
+<div class="speaker-section">
+  <div class="speaker-inner">
+    <div class="speaker-photo-wrap">
+      <img src="raghav.jpg" alt="Raghav Bali" class="speaker-photo" style="object-fit:cover;object-position:top center;">
+      <div class="speaker-badge">Your Host</div>
+    </div>
+    <div class="speaker-info">
+      <div class="speaker-tag">About the Speaker</div>
+      <div class="speaker-name">Raghav Bali</div>
+      <div class="speaker-title">Founder's Office, Spalba</div>
+      <p class="speaker-bio">Raghav Bali is an event planning subject matter expert with deep experience in venue strategy, operations, and client decision workflows. At Spalba, he supports the Founder's Office in shaping digital workflows that make event planning faster, more structured, and more efficient.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PROBLEM ========== -->
+<div class="section" style="background:var(--white);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="stag">The Problem No One Talks About</div>
+    <h2>You are doing everything right.<br>So why are clients still <em>hesitating?</em></h2>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="sn">3<sup>x</sup></div><div class="sd">More revision cycles when clients cannot visualise the actual event setup before approving</div></div>
+      <div class="stat-card"><div class="sn">68<sup>%</sup></div><div class="sd">Of clients say they felt unsure about the proposal until they could truly picture the event</div></div>
+      <div class="stat-card"><div class="sn">1</div><div class="sd">Fewer back-and-forths when you show clients an actual 3D mock setup of the event</div></div>
+    </div>
+    <div class="problem-quote">"Most planners are still pitching with mood boards and PDFs. The ones closing faster have changed one thing about how they present. This session shows you exactly what that is."</div>
+  </div>
+</div>
+
+<!-- ========== SHIFT ========== -->
+<div class="section" style="background:var(--bg);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="stag">What Changes After This Session</div>
+    <h2>The shift from hoping they say yes<br>to <em>knowing they will.</em></h2>
+    <div class="shift-list">
+      <div class="shift-item"><div class="sbefore">Sending mood boards and waiting days for client feedback</div><div class="sarrow">&rarr;</div><div class="safter">Showing a fully built 3D event layout right inside the meeting</div></div>
+      <div class="shift-item"><div class="sbefore">Three rounds of revisions before the client feels confident enough to approve</div><div class="sarrow">&rarr;</div><div class="safter">Client approves the full event setup in a single conversation</div></div>
+      <div class="shift-item"><div class="sbefore">Hours spent manually building and rebuilding floor plan layouts</div><div class="sarrow">&rarr;</div><div class="safter">Select pax, get a default layout instantly, and customise every detail to match your client's vision</div></div>
+      <div class="shift-item"><div class="sbefore">Travelling to multiple venues for recces before shortlisting one</div><div class="sarrow">&rarr;</div><div class="safter">Walking through any venue in full 3D from your desk before committing to a visit</div></div>
+      <div class="shift-item"><div class="sbefore">Clients asking "but what will it actually look like on the day?"</div><div class="sarrow">&rarr;</div><div class="safter">Show clients a full 3D mock setup with real measured dimensions before a single decision is made</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== RECCE ========== -->
+<div class="recce-section">
+  <div class="recce-inner">
+    <div class="recce-left">
+      <div class="stag">The Recce Problem</div>
+      <h2>Scout India's finest venues<br>without leaving <em>your desk.</em></h2>
+      <p>Every event planner knows the cost of a recce. Travel, time, multiple visits, shortlisting, revisiting. For premium properties across cities, this adds up fast. Spalba changes that entirely. Walk through Taj, Hyatt, Leela, and Oberoi venues in full 3D. Measure the space, plan the layout, and build your event mock setup before making a single call to the venue team.</p>
+      <div class="recce-savings">
+        <div class="saving-row"><div class="saving-icon" style="background:rgba(255,117,85,0.15);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF7555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="saving-text"><b>Save days of travel time</b>Shortlist venues virtually and only visit the one you are serious about</div></div>
+        <div class="saving-row"><div class="saving-icon" style="background:rgba(35,132,229,0.15);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2384E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="saving-text"><b>Cut recce costs significantly</b>No more spending on travel and accommodation just to explore venue options</div></div>
+        <div class="saving-row"><div class="saving-icon" style="background:rgba(1,120,207,0.15);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0178CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="saving-text"><b>Access 500 plus venues instantly</b>Every major premium property across India available to walk through right now</div></div>
+      </div>
+    </div>
+    <div class="recce-right">
+      <div class="recce-stat"><div class="rs-num">4<span>-5</span></div><div class="rs-label">Average number of physical recces a planner does before finalising a venue for a large event</div></div>
+      <div class="recce-stat"><div class="rs-num">2<span>x</span></div><div class="rs-label">Faster venue finalisation when you do a virtual walkthrough and measure the space first</div></div>
+      <div class="recce-stat"><div class="rs-num">500<span>+</span></div><div class="rs-label">Premium properties across India on Spalba including Taj, Hyatt, Leela, and Oberoi</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== INSIDE THE SESSION ========== -->
+<div class="section" style="background:var(--white);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="stag">What You Will See in This Session</div>
+    <h2>Three things that will change how you<br><em>present and plan events forever.</em></h2>
+    <div class="inside-grid">
+      <div class="inside-card"><div class="ic-n">01</div><div class="ic-icon" style="background:#eef5fd;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2384E5" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="ic-t">From Floor Plan to Full 3D Setup</div><div class="ic-b">Watch a 2D layout transform into a complete, photorealistic 3D event environment. Every table, stage, drape, and decor element placed and rendered instantly.</div></div>
+      <div class="inside-card"><div class="ic-n">02</div><div class="ic-icon" style="background:#fff3f0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF7555" stroke-width="2" stroke-linecap="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg></div><div class="ic-t">Default Layout in One Click</div><div class="ic-b">Select your guest count and a default layout appears instantly. Then customise the seating, staging, spacing, and every detail to match your client's exact requirements.</div></div>
+      <div class="inside-card"><div class="ic-n">03</div><div class="ic-icon" style="background:#e6f3ff;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0178CF" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div><div class="ic-t">Walk Any Venue From Your Desk</div><div class="ic-b">Explore Taj, Hyatt, Leela, Oberoi, and 500 plus properties in full 3D before a single site visit. Measure the space and present clients a complete 3D mock setup.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== WHO ========== -->
+<div class="section" style="background:var(--bg);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="stag">Who This Is For</div>
+    <h2>For professionals who plan events<br>at <span class="b">premium properties.</span></h2>
+    <div class="who-grid">
+      <div class="who-card"><div class="wcheck"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#2384E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Event Planners</span></div>
+      <div class="who-card"><div class="wcheck"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#2384E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Event Agencies</span></div>
+      <div class="who-card"><div class="wcheck"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#2384E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>DMCs</span></div>
+      <div class="who-card"><div class="wcheck"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#2384E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Corporate Event Teams</span></div>
+      <div class="who-card"><div class="wcheck"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#2384E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Venue Sales Managers</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== PROPERTIES ========== -->
+<div class="section" style="background:var(--white);border-bottom:1px solid var(--border);">
+  <div class="section-inner">
+    <div class="stag">Properties on Spalba</div>
+    <h2>Trusted by planners working with<br>India's <em>finest properties.</em></h2>
+    <div class="hotels-wrap">
+      <div class="hotel-tag"><img src="https://logo.clearbit.com/tajhotels.com" alt="Taj Hotels"></div>
+      <div class="hotel-tag"><img src="https://logo.clearbit.com/hyatt.com" alt="Hyatt"></div>
+      <div class="hotel-tag"><img src="https://logo.clearbit.com/theleela.com" alt="The Leela"></div>
+      <div class="hotel-tag"><img src="https://logo.clearbit.com/oberoihotels.com" alt="Oberoi Hotels"></div>
+      <div class="hotel-tag"><img src="https://logo.clearbit.com/accor.com" alt="Accor"></div>
+      <div class="hotel-tag"><img src="https://logo.clearbit.com/itchotels.com" alt="ITC Hotels"></div>
+      <div class="hotel-tag"><img src="https://logo.clearbit.com/marriott.com" alt="JW Marriott"></div>
+      <div class="hotel-tag"><img src="https://logo.clearbit.com/radissonhotels.com" alt="Radisson Blu"></div>
+      <div class="hotel-tag"><img src="https://logo.clearbit.com/hilton.com" alt="Hilton"></div>
+      <div class="hotel-tag"><img src="https://logo.clearbit.com/sheraton.com" alt="Sheraton"></div>
+      <div class="hotel-tag"><img src="https://logo.clearbit.com/fourseasons.com" alt="Four Seasons"></div>
+      <div class="hotel-tag"><img src="https://logo.clearbit.com/stregis.com" alt="St. Regis"></div>
+      <div class="hotel-tag"><img src="https://logo.clearbit.com/conradhotels.com" alt="Conrad"></div>
+      <div class="hotel-tag"><img src="https://logo.clearbit.com/westinhotels.com" alt="Westin"></div>
+      <div class="hotel-tag"><img src="https://logo.clearbit.com/sofitel.com" alt="Sofitel"></div>
+      <div class="hotel-tag text-tag">+ 500 more venues</div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== FINAL CTA ========== -->
+<div class="final-section">
+  <div class="final-inner">
+    <h2>Stop sending proposals.<br>Start <em>showing</em> the event.</h2>
+    <p>Register below, pick your day and time slot, and get instant access to the full session. No waiting. No back and forth. Just watch and apply.</p>
+    <button class="final-btn" onclick="openModal()">Reserve My Free Spot</button>
+    <p class="final-micro">Free &middot; 45 minutes &middot; Instant access &middot; No credit card required</p>
+  </div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<div class="footer">
+  <div class="footer-text">&copy; 2026 Spalba Technologies Pvt. Ltd. &middot; webinar.spalba.com</div>
+</div>
+
+<!-- ========== REGISTRATION MODAL (2-Step) ========== -->
+<div class="modal-overlay" id="modal" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modal-box">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+
+    <!-- Step Indicator -->
+    <div class="steps">
+      <div class="step-dot active" id="sd1">1</div>
+      <div class="step-line" id="sl1"></div>
+      <div class="step-dot" id="sd2">2</div>
+    </div>
+
+    <!-- STEP 1: Registration Form -->
+    <div class="modal-step active" id="step1">
+      <div class="modal-tag">Step 1 of 2</div>
+      <div class="modal-title">Register for the Session</div>
+      <div class="modal-sub">Fill in your details below. Takes 30 seconds.</div>
+
+      <div class="mform-row full">
+        <div class="mfield"><label>Full Name</label><input type="text" id="m-name" placeholder="e.g. Priya Sharma"><div class="error-msg">Required</div></div>
+      </div>
+      <div class="mform-row full">
+        <div class="mfield"><label>Email Address</label><input type="email" id="m-em" placeholder="priya@company.com"><div class="error-msg">Enter a valid email</div></div>
+      </div>
+      <div class="mform-row full">
+        <div class="mfield"><label>Phone Number</label><input type="tel" id="m-ph" placeholder="+91 98765 43210"><div class="error-msg">Enter a valid phone number</div></div>
+      </div>
+      <div class="mform-row">
+        <div class="mfield"><label>Job Title</label><input type="text" id="m-jt" placeholder="e.g. Event Manager"><div class="error-msg">Required</div></div>
+        <div class="mfield"><label>Company</label><input type="text" id="m-co" placeholder="Your company name"><div class="error-msg">Required</div></div>
+      </div>
+
+      <button class="btn-next" onclick="goToStep2()">Continue &mdash; Pick Your Slot &rarr;</button>
+      <p class="modal-micro">Free &middot; No credit card &middot; No spam</p>
+    </div>
+
+    <!-- STEP 2: Slot Selection -->
+    <div class="modal-step" id="step2">
+      <div class="modal-tag">Step 2 of 2</div>
+      <div class="modal-title">Pick Your Session</div>
+      <div class="modal-sub">Choose one of the upcoming sessions below. Each slot has a fixed day and time.</div>
+
+      <div class="day-label">Select a session</div>
+      <div class="day-row" id="day-row" style="flex-direction:column;gap:10px;"></div>
+
+      <div class="seats-notice"><span></span>Only <b id="seats-left">17</b> spots remaining this week. Slots are filling up fast.</div>
+
+      <button class="btn-confirm" id="confirm-btn" onclick="submitRegistration()" disabled>
+        Confirm &amp; Register
+      </button>
+      <button class="btn-back" onclick="goToStep1()">&larr; Back to Details</button>
+      <p class="modal-micro">Your access link will be sent to your email and WhatsApp</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// =============================================
+// CONFIGURATION - Replace these values
+// =============================================
+var CONFIG = {
+  BREVO_API_KEY: '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',
+  BREVO_LIST_ID: 97,
+
+  WATI_API_BASE: 'https://live-mt-server.wati.io/106127/api/v1',
+  WATI_TOKEN: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InNvY2lhbEBzcGFsYmEuY29tIiwibmFtZWlkIjoic29jaWFsQHNwYWxiYS5jb20iLCJlbWFpbCI6InNvY2lhbEBzcGFsYmEuY29tIiwiYXV0aF90aW1lIjoiMDMvMzAvMjAyNiAxNDowMTozNiIsInRlbmFudF9pZCI6IjEwNjEyNyIsImRiX25hbWUiOiJtdC1wcm9kLVRlbmFudHMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBRE1JTklTVFJBVE9SIiwiZXhwIjoyNTM0MDIzMDA4MDAsImlzcyI6IkNsYXJlX0FJIiwiYXVkIjoiQ2xhcmVfQUkifQ.LfefmZjctQzS_xytkjMAcQCZeCcSFOwSPHebme1Esvw',
+  WATI_TEMPLATE_REGISTERED: 'webinar_registered',
+
+  THANK_YOU_URL: 'thank-you.html',
+  WATCH_URL: 'watch.html',
+
+  // Fixed webinar schedule: [dayOfWeek (0=Sun), hour24, minute, label]
+  SCHEDULE: [
+    { day: 1, hour: 15, min: 0,  label: 'Monday, 3:00 PM IST' },
+    { day: 4, hour: 17, min: 30, label: 'Thursday, 5:30 PM IST' },
+    { day: 6, hour: 12, min: 0,  label: 'Saturday, 12:00 PM IST' }
+  ]
+};
+
+// =============================================
+// STATE
+// =============================================
+var selectedSession = null; // { date, datetime, label }
+
+// =============================================
+// MODAL CONTROLS
+// =============================================
+function openModal() {
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('modal')) closeModal();
+}
+
+// =============================================
+// STEP NAVIGATION
+// =============================================
+function goToStep2() {
+  var valid = true;
+  var fields = [
+    { id: 'm-name', type: 'text' },
+    { id: 'm-em', type: 'email' },
+    { id: 'm-ph', type: 'phone' },
+    { id: 'm-jt', type: 'text' },
+    { id: 'm-co', type: 'text' }
+  ];
+
+  fields.forEach(function(f) {
+    var el = document.getElementById(f.id);
+    var parent = el.parentElement;
+    var val = el.value.trim();
+    parent.classList.remove('has-error');
+
+    if (!val) {
+      parent.classList.add('has-error');
+      valid = false;
+    } else if (f.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+      parent.classList.add('has-error');
+      valid = false;
+    } else if (f.type === 'phone' && !/^[\+]?[\d\s\-()]{7,15}$/.test(val)) {
+      parent.classList.add('has-error');
+      valid = false;
+    }
+  });
+
+  if (!valid) return;
+
+  document.getElementById('step1').classList.remove('active');
+  document.getElementById('step2').classList.add('active');
+  document.getElementById('sd1').classList.remove('active');
+  document.getElementById('sd1').classList.add('done');
+  document.getElementById('sd1').innerHTML = '<svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  document.getElementById('sl1').classList.add('active');
+  document.getElementById('sd2').classList.add('active');
+  document.getElementById('modal-box').scrollTop = 0;
+}
+
+function goToStep1() {
+  document.getElementById('step2').classList.remove('active');
+  document.getElementById('step1').classList.add('active');
+  document.getElementById('sd1').classList.add('active');
+  document.getElementById('sd1').classList.remove('done');
+  document.getElementById('sd1').innerHTML = '1';
+  document.getElementById('sl1').classList.remove('active');
+  document.getElementById('sd2').classList.remove('active');
+}
+
+// =============================================
+// BUILD SESSION SLOTS (next 3 upcoming: Mon 3PM, Thu 5:30PM, Sat 12PM)
+// =============================================
+function getNextSessions() {
+  var sessions = [];
+  var now = new Date();
+  var dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  // Look ahead up to 14 days to find next 3 sessions
+  for (var offset = 0; offset < 14 && sessions.length < 3; offset++) {
+    var candidate = new Date(now);
+    candidate.setDate(candidate.getDate() + offset);
+
+    CONFIG.SCHEDULE.forEach(function(slot) {
+      if (sessions.length >= 3) return;
+      if (candidate.getDay() !== slot.day) return;
+
+      // Build the session datetime
+      var dt = new Date(candidate);
+      dt.setHours(slot.hour, slot.min, 0, 0);
+
+      // Skip if this time has already passed today
+      if (dt <= now) return;
+
+      var dateStr = dt.getFullYear() + '-' +
+        String(dt.getMonth() + 1).padStart(2, '0') + '-' +
+        String(dt.getDate()).padStart(2, '0');
+      var timeStr = String(slot.hour).padStart(2, '0') + ':' + String(slot.min).padStart(2, '0');
+      var isoDatetime = dateStr + 'T' + timeStr + ':00+05:30';
+
+      // Friendly label: "Monday, 7 Apr - 3:00 PM IST"
+      var friendlyTime = formatTime12(slot.hour, slot.min);
+      var dayLabel = dayNames[slot.day] + ', ' + dt.getDate() + ' ' + monthNames[dt.getMonth()];
+      var fullLabel = dayLabel + ' - ' + friendlyTime + ' IST';
+
+      // How far away
+      var diffMs = dt - now;
+      var diffDays = Math.floor(diffMs / 86400000);
+      var proximity = '';
+      if (diffDays === 0) proximity = 'Today';
+      else if (diffDays === 1) proximity = 'Tomorrow';
+      else proximity = dayNames[slot.day];
+
+      sessions.push({
+        date: dateStr,
+        datetime: isoDatetime,
+        label: fullLabel,
+        dayLabel: dayLabel,
+        slot: friendlyTime + ' IST',
+        proximity: proximity,
+        dateNum: dt.getDate(),
+        month: monthNames[dt.getMonth()]
+      });
+    });
+  }
+  return sessions;
+}
+
+function formatTime12(h, m) {
+  var suffix = h >= 12 ? 'PM' : 'AM';
+  var h12 = h > 12 ? h - 12 : (h === 0 ? 12 : h);
+  return h12 + ':' + String(m).padStart(2, '0') + ' ' + suffix;
+}
+
+function buildDays() {
+  var row = document.getElementById('day-row');
+  var sessions = getNextSessions();
+
+  sessions.forEach(function(sess, i) {
+    var btn = document.createElement('div');
+    btn.className = 'day-btn';
+    btn.style.cssText = 'display:flex;align-items:center;gap:16px;padding:16px 20px;text-align:left;';
+    btn.dataset.index = i;
+    btn.innerHTML =
+      '<div style="min-width:44px;text-align:center;">' +
+        '<div class="db-day">' + sess.proximity + '</div>' +
+        '<div class="db-date">' + sess.dateNum + '</div>' +
+        '<div class="db-month">' + sess.month + '</div>' +
+      '</div>' +
+      '<div style="flex:1;border-left:1px solid var(--border);padding-left:16px;">' +
+        '<div style="font-size:15px;font-weight:700;color:var(--navy);">' + sess.slot + '</div>' +
+        '<div style="font-size:12px;color:#aaa;margin-top:2px;">' + sess.dayLabel + '</div>' +
+      '</div>';
+
+    btn.onclick = function() {
+      document.querySelectorAll('.day-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      selectedSession = sess;
+      document.getElementById('confirm-btn').disabled = false;
+    };
+    row.appendChild(btn);
+  });
+}
+buildDays();
+
+// =============================================
+// FORM SUBMISSION VIA BREVO API
+// =============================================
+function submitRegistration() {
+  var btn = document.getElementById('confirm-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Registering...';
+
+  var fullName = document.getElementById('m-name').value.trim();
+  var nameParts = fullName.split(' ');
+  var firstName = nameParts[0] || '';
+  var lastName = nameParts.slice(1).join(' ') || '';
+
+  var data = {
+    fullName: fullName,
+    firstName: firstName,
+    lastName: lastName,
+    email: document.getElementById('m-em').value.trim(),
+    phone: document.getElementById('m-ph').value.trim(),
+    company: document.getElementById('m-co').value.trim(),
+    jobTitle: document.getElementById('m-jt').value.trim()
+  };
+
+  var brevoPayload = {
+    email: data.email,
+    attributes: {
+      FIRSTNAME: data.firstName,
+      LASTNAME: data.lastName,
+      FULLNAME: data.fullName,
+      SMS: data.phone,
+      COMPANY: data.company,
+      JOBTITLE: data.jobTitle,
+      WEBINAR_DATE: selectedSession.date,
+      WEBINAR_SLOT: selectedSession.slot,
+      WEBINAR_DATETIME: selectedSession.datetime
+    },
+    listIds: [CONFIG.BREVO_LIST_ID],
+    updateEnabled: true
+  };
+
+  fetch('https://api.brevo.com/v3/contacts', {
+    method: 'POST',
+    headers: {
+      'accept': 'application/json',
+      'content-type': 'application/json',
+      'api-key': CONFIG.BREVO_API_KEY
+    },
+    body: JSON.stringify(brevoPayload)
+  })
+  .then(function(response) {
+    if (!response.ok && response.status !== 201) {
+      return fetch('https://api.brevo.com/v3/contacts/' + encodeURIComponent(data.email), {
+        method: 'PUT',
+        headers: {
+          'accept': 'application/json',
+          'content-type': 'application/json',
+          'api-key': CONFIG.BREVO_API_KEY
+        },
+        body: JSON.stringify({
+          attributes: brevoPayload.attributes,
+          listIds: [CONFIG.BREVO_LIST_ID]
+        })
+      });
+    }
+    return response;
+  })
+  .then(function() {
+    // Send confirmation email via Brevo transactional
+    var emailPromise = fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'accept': 'application/json',
+        'content-type': 'application/json',
+        'api-key': CONFIG.BREVO_API_KEY
+      },
+      body: JSON.stringify({
+        templateId: 592,
+        to: [{ email: data.email, name: data.fullName }],
+        params: {
+          FIRSTNAME: data.firstName,
+          FULLNAME: data.fullName,
+          WEBINAR_DATE: selectedSession.dayLabel,
+          WEBINAR_SLOT: selectedSession.slot,
+          WEBINAR_DATETIME: selectedSession.datetime,
+          EMAIL: data.email
+        }
+      })
+    });
+
+    // Send WhatsApp confirmation via WATI
+    var phone = data.phone.replace(/[\s\-()]/g, '').replace(/^\+/, '');
+    var whatsappPromise = fetch(CONFIG.WATI_API_BASE + '/sendTemplateMessage?whatsappNumber=' + encodeURIComponent(phone), {
+      method: 'POST',
+      headers: {
+        'Authorization': CONFIG.WATI_TOKEN,
+        'Content-Type': 'application/json-patch+json'
+      },
+      body: JSON.stringify({
+        template_name: CONFIG.WATI_TEMPLATE_REGISTERED,
+        broadcast_name: 'webinar_ondemand_registration',
+        parameters: [
+          { name: 'first_name', value: data.firstName }
+        ]
+      })
+    }).catch(function(e) { console.log('WATI error:', e); });
+
+    return Promise.all([emailPromise, whatsappPromise]);
+  })
+  .then(function() {
+    var params = new URLSearchParams({
+      fn: data.firstName,
+      em: data.email,
+      day: selectedSession.dayLabel,
+      slot: selectedSession.slot,
+      dt: selectedSession.datetime
+    });
+    window.location.href = CONFIG.THANK_YOU_URL + '?' + params.toString();
+  })
+  .catch(function(err) {
+    console.error('Brevo error:', err);
+    // Still redirect even if email fails
+    var params = new URLSearchParams({
+      fn: data.firstName,
+      em: data.email,
+      day: selectedSession.dayLabel,
+      slot: selectedSession.slot,
+      dt: selectedSession.datetime
+    });
+    window.location.href = CONFIG.THANK_YOU_URL + '?' + params.toString();
+  });
+}
+
+// =============================================
+// SEAT SCARCITY (randomize slightly on each load)
+// =============================================
+(function() {
+  var seats = Math.floor(Math.random() * 8) + 12; // 12-19
+  var el = document.getElementById('seats-left');
+  if (el) el.textContent = seats;
+})();
+</script>
+</body>
+</html>
